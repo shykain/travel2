@@ -331,6 +331,20 @@ footer { background:#0a1a1a; color:#666; text-align:center; padding:24px 20px; f
 }
 @keyframes pulse { 0%{opacity:0.5;transform:scale(1)} 100%{opacity:0;transform:scale(1.15)} }
 
+.guide-tip {
+  position:fixed; right:16px; bottom:72px; z-index:299;
+  background:#fff; color:var(--primary-d); font-size:12px; font-weight:600;
+  padding:6px 14px; border-radius:20px; box-shadow:0 4px 16px rgba(0,0,0,0.12);
+  white-space:nowrap; pointer-events:none; animation:tipBounce 2s ease-in-out infinite;
+  border:1px solid var(--border);
+}
+.guide-tip::after {
+  content:''; position:absolute; bottom:-6px; right:24px;
+  width:0; height:0; border-left:6px solid transparent; border-right:6px solid transparent;
+  border-top:6px solid #fff;
+}
+@keyframes tipBounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
+
 .guide-panel {
   position:fixed; right:16px; bottom:80px; z-index:300;
   width:320px; max-width:calc(100vw - 32px);
@@ -891,6 +905,7 @@ footer { background:#0a1a1a; color:#666; text-align:center; padding:24px 20px; f
 </footer>
 
 <!-- ====== Floating Guide Widget ====== -->
+<div class="guide-tip" id="guideTip">👇 点击这里联系导游</div>
 <div class="guide-fab" id="guideFab" onclick="toggleGuide()">
   <span class="fab-pulse"></span>
   <span class="fab-icon">👨‍✈️</span>
@@ -951,6 +966,8 @@ function switchFee(id) {
 // Guide toggle
 function toggleGuide() {
   document.getElementById('guidePanel').classList.toggle('show');
+  var tip = document.getElementById('guideTip');
+  if (tip) tip.style.display = 'none';
 }
 // Close guide on outside click
 document.addEventListener('click', function(e) {
