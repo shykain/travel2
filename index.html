@@ -2,424 +2,427 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>彩云之南 · 昆大丽纯玩之旅</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<title>彩云之南 · 昆大丽6日纯玩之旅</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  :root {
-    --primary: #1a7a6d;
-    --primary-light: #3fa89a;
-    --primary-dark: #0f5a50;
-    --accent: #e8915a;
-    --accent-light: #f0a878;
-    --bg: #f6f3ee;
-    --bg-soft: #faf8f4;
-    --text: #2d3a3a;
-    --muted: #6b7c7c;
-    --card: #ffffff;
-    --border: #e8e2d8;
-    --shadow: 0 8px 30px rgba(26,122,109,0.10);
-    --shadow-hover: 0 16px 40px rgba(26,122,109,0.18);
-  }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.75;
-    overflow-x: hidden;
-  }
+/* ====== Reset & Base ====== */
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --primary:#1a7a6d; --primary-l:#3fa89a; --primary-d:#0d4a42;
+  --accent:#e8915a; --accent-l:#f5b88a;
+  --bg:#f4f1ea; --bg-s:#faf8f4;
+  --text:#26343a; --muted:#6c7d7d;
+  --card:#fff; --border:#e6ddd0;
+  --shadow:0 4px 24px rgba(26,122,109,0.08);
+  --shadow-l:0 12px 40px rgba(26,122,109,0.15);
+  --r:16px; --r-sm:10px; --r-lg:24px;
+}
+html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+body {
+  font-family:"PingFang SC","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  background:var(--bg); color:var(--text); line-height:1.7;
+  overflow-x:hidden; -webkit-font-smoothing:antialiased;
+}
+img { max-width:100%; display:block; }
+a { text-decoration:none; }
 
-  /* ===== 导航 ===== */
-  .nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    background: rgba(255,255,255,0.94);
-    backdrop-filter: blur(12px);
-    z-index: 100;
-    box-shadow: 0 2px 20px rgba(0,0,0,0.05);
-  }
-  .nav-inner {
-    max-width: 1240px; margin: 0 auto;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 14px 32px;
-  }
-  .logo {
-    font-size: 22px; font-weight: 800; color: var(--primary);
-    letter-spacing: 1px; display: flex; align-items: center; gap: 8px;
-  }
-  .logo .dot { width: 10px; height: 10px; background: var(--accent); border-radius: 50%; display: inline-block; }
-  .nav-links { display: flex; gap: 28px; list-style: none; }
-  .nav-links a {
-    color: var(--text); text-decoration: none; font-size: 15px;
-    font-weight: 500; transition: color .2s; position: relative;
-  }
-  .nav-links a:hover { color: var(--primary); }
-  .nav-links a::after {
-    content: ''; position: absolute; bottom: -4px; left: 0;
-    width: 0; height: 2px; background: var(--accent); transition: width .2s;
-  }
-  .nav-links a:hover::after { width: 100%; }
+/* ====== Nav ====== */
+.nav {
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  background:rgba(255,255,255,0.92); backdrop-filter:blur(16px);
+  box-shadow:0 1px 12px rgba(0,0,0,0.05);
+}
+.nav-in {
+  max-width:1200px; margin:0 auto; padding:12px 20px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.logo { font-size:18px; font-weight:800; color:var(--primary); display:flex; align-items:center; gap:6px; }
+.logo .dot { width:8px; height:8px; background:var(--accent); border-radius:50%; }
+.nav-links { display:flex; gap:24px; list-style:none; }
+.nav-links a {
+  color:var(--text); font-size:14px; font-weight:500;
+  transition:color .2s; position:relative;
+}
+.nav-links a:hover { color:var(--primary); }
+.nav-links a::after {
+  content:''; position:absolute; bottom:-3px; left:0; width:0; height:2px;
+  background:var(--accent); transition:width .2s;
+}
+.nav-links a:hover::after { width:100%; }
+.nav-mobile-btn { display:none; }
 
-  /* ===== Hero ===== */
-  .hero {
-    height: 100vh; min-height: 620px;
-    background: linear-gradient(135deg, rgba(15,90,80,0.65) 0%, rgba(26,122,109,0.45) 50%, rgba(232,145,90,0.35) 100%),
-                url('https://images.unsplash.com/photo-1528164344705-47542687000d?w=1600&q=80') center/cover no-repeat;
-    display: flex; align-items: center; justify-content: center;
-    color: #fff; text-align: center; padding: 0 24px;
-    position: relative;
-  }
-  .hero-content { max-width: 820px; animation: fadeUp 1s ease; }
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-  .hero .eyebrow {
-    display: inline-block; padding: 6px 18px; border: 1px solid rgba(255,255,255,0.5);
-    border-radius: 30px; font-size: 13px; margin-bottom: 24px; letter-spacing: 2px;
-    backdrop-filter: blur(6px);
-  }
-  .hero h1 {
-    font-size: clamp(38px, 6vw, 68px); font-weight: 800;
-    margin-bottom: 18px; letter-spacing: 6px;
-    text-shadow: 0 4px 24px rgba(0,0,0,0.4);
-  }
-  .hero h1 .accent { color: var(--accent-light); }
-  .hero p { font-size: clamp(15px, 1.8vw, 20px); opacity: 0.95; margin-bottom: 36px; letter-spacing: 1px; }
-  .hero-tags { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-  .hero-tags span {
-    background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.35);
-    padding: 8px 18px; border-radius: 30px; font-size: 14px; backdrop-filter: blur(8px);
-  }
-  .scroll-hint {
-    position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
-    color: rgba(255,255,255,0.8); font-size: 13px; letter-spacing: 2px;
-    animation: bounce 2s infinite;
-  }
-  @keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+/* ====== Hero ====== */
+.hero {
+  min-height:100vh; display:flex; align-items:center; justify-content:center;
+  text-align:center; color:#fff; padding:80px 20px 60px; position:relative;
+  background:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Erhai%20lake%20Dali%20Yunnan%20panoramic%20view%20with%20Cangshan%20mountains%20golden%20sunset%20reflection%20on%20water%20dramatic%20clouds%20aerial%20photography&image_size=landscape_16_9') center/cover no-repeat;
+}
+.hero::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(180deg,rgba(13,74,66,0.5) 0%,rgba(13,74,66,0.3) 50%,rgba(13,74,66,0.7) 100%);
+}
+.hero-c { position:relative; z-index:1; max-width:680px; animation:fadeUp 1.2s ease; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:translateY(0)} }
+.hero .tag {
+  display:inline-block; padding:5px 16px; border:1px solid rgba(255,255,255,0.5);
+  border-radius:30px; font-size:12px; letter-spacing:2px; margin-bottom:20px; backdrop-filter:blur(8px);
+}
+.hero h1 {
+  font-size:clamp(34px,8vw,60px); font-weight:800; letter-spacing:4px;
+  text-shadow:0 4px 24px rgba(0,0,0,0.4); margin-bottom:14px;
+}
+.hero h1 .a { color:var(--accent-l); }
+.hero p { font-size:clamp(14px,3vw,18px); opacity:0.95; margin-bottom:28px; }
+.hero-tags { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+.hero-tags span {
+  background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3);
+  padding:7px 14px; border-radius:30px; font-size:13px; backdrop-filter:blur(8px);
+}
 
-  /* ===== 通用 ===== */
-  section { padding: 90px 32px; }
-  .container { max-width: 1240px; margin: 0 auto; }
-  .section-title { text-align: center; margin-bottom: 56px; }
-  .section-title .eyebrow {
-    color: var(--accent); font-size: 14px; letter-spacing: 3px; font-weight: 600; text-transform: uppercase;
-  }
-  .section-title h2 {
-    font-size: 36px; color: var(--primary); margin: 10px 0 14px; font-weight: 700;
-  }
-  .section-title p { color: var(--muted); font-size: 16px; }
-  .section-title .bar {
-    width: 56px; height: 4px; background: var(--accent);
-    margin: 18px auto 0; border-radius: 2px;
-  }
+/* ====== Section bg with blur ====== */
+.sec-bg {
+  position:relative;
+}
+.sec-bg .bg-img {
+  position:absolute; inset:0; background-size:cover; background-position:center;
+  filter:blur(3px) brightness(0.9);
+}
+.sec-bg .bg-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(180deg,rgba(244,241,234,0.85) 0%,rgba(244,241,234,0.92) 100%);
+}
+.sec-bg .container { position:relative; z-index:1; }
 
-  /* ===== 产品卡片 ===== */
-  .packages { display: grid; grid-template-columns: repeat(auto-fit, minmax(460px, 1fr)); gap: 32px; }
-  .pkg-card {
-    background: var(--card); border-radius: 20px; overflow: hidden;
-    box-shadow: var(--shadow); transition: transform .35s, box-shadow .35s;
-    border: 1px solid var(--border);
-  }
-  .pkg-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); }
-  .pkg-cover { height: 260px; position: relative; }
-  .pkg-cover::after {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 55%);
-  }
-  .pkg-cover.p1 { background: url('https://images.unsplash.com/photo-1537531383496-f4749b8032cf?w=900&q=80') center/cover; }
-  .pkg-cover.p2 { background: url('https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=900&q=80') center/cover; }
-  .pkg-label {
-    position: absolute; top: 18px; left: 18px; z-index: 2;
-    background: var(--accent); color: #fff; padding: 6px 14px;
-    border-radius: 20px; font-size: 12.5px; font-weight: 600; letter-spacing: 1px;
-  }
-  .pkg-badge {
-    position: absolute; top: 18px; right: 18px; z-index: 2;
-    background: rgba(255,255,255,0.22); color: #fff; padding: 5px 12px;
-    border-radius: 20px; font-size: 12px; backdrop-filter: blur(6px);
-    border: 1px solid rgba(255,255,255,0.3);
-  }
-  .pkg-body { padding: 28px; }
-  .pkg-body h3 { font-size: 22px; margin-bottom: 8px; color: var(--text); font-weight: 700; }
-  .pkg-body .slogan { color: var(--accent); font-size: 14px; margin-bottom: 14px; font-weight: 500; }
-  .pkg-meta { display: flex; gap: 20px; color: var(--muted); font-size: 14px; margin-bottom: 16px; flex-wrap: wrap; }
-  .pkg-meta span { display: flex; align-items: center; gap: 5px; }
-  .pkg-desc { color: var(--muted); font-size: 14.5px; margin-bottom: 22px; min-height: 48px; }
-  .pkg-features { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
-  .pkg-features span {
-    background: var(--bg); border: 1px solid var(--border); color: var(--primary-dark);
-    padding: 4px 12px; border-radius: 12px; font-size: 12.5px;
-  }
-  .pkg-btn {
-    display: inline-block; padding: 12px 30px; background: var(--primary);
-    color: #fff; text-decoration: none; border-radius: 30px; font-weight: 600;
-    transition: all .2s; border: none; cursor: pointer; font-size: 15px;
-  }
-  .pkg-btn:hover { background: var(--primary-light); transform: translateY(-2px); }
-  .pkg-btn.outline { background: transparent; color: var(--primary); border: 2px solid var(--primary); margin-left: 10px; }
-  .pkg-btn.outline:hover { background: var(--primary); color: #fff; }
+/* ====== Common ====== */
+section { padding:80px 20px; }
+.container { max-width:1200px; margin:0 auto; }
+.sec-title { text-align:center; margin-bottom:48px; }
+.sec-title .eb { color:var(--accent); font-size:13px; letter-spacing:3px; font-weight:600; text-transform:uppercase; }
+.sec-title h2 { font-size:clamp(26px,5vw,36px); color:var(--primary); margin:8px 0 10px; font-weight:700; }
+.sec-title p { color:var(--muted); font-size:15px; }
+.sec-title .bar { width:48px; height:3px; background:var(--accent); margin:14px auto 0; border-radius:2px; }
 
-  /* ===== Tab 切换 ===== */
-  .tabs {
-    display: flex; justify-content: center; gap: 16px; margin-bottom: 48px; flex-wrap: wrap;
-  }
-  .tab-btn {
-    padding: 12px 28px; background: #fff; border: 2px solid var(--border);
-    border-radius: 30px; cursor: pointer; font-size: 15px; font-weight: 600;
-    color: var(--muted); transition: all .25s;
-  }
-  .tab-btn.active {
-    background: var(--primary); color: #fff; border-color: var(--primary);
-    box-shadow: 0 6px 18px rgba(26,122,109,0.3);
-  }
-  .tab-btn:hover:not(.active) { border-color: var(--primary); color: var(--primary); }
-  .tab-panel { display: none; animation: fadeIn .4s ease; }
-  .tab-panel.active { display: block; }
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+/* ====== Price banner ====== */
+.price-banner {
+  position:relative; color:#fff; text-align:center; padding:50px 20px; overflow:hidden;
+  background:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Yunnan%20terraced%20fields%20Yuanyang%20golden%20sunset%20layers%20of%20rice%20paddies%20mountains%20dramatic%20light&image_size=landscape_16_9') center/cover no-repeat;
+}
+.price-banner::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg,rgba(13,74,66,0.82) 0%,rgba(26,122,109,0.75) 100%);
+}
+.price-banner > * { position:relative; z-index:1; }
+.pb-dest { font-size:clamp(18px,4vw,22px); font-weight:700; margin-bottom:14px; }
+.pb-price { font-size:clamp(44px,10vw,56px); font-weight:800; color:var(--accent-l); line-height:1; }
+.pb-price small { font-size:20px; } .pb-price .u { font-size:22px; opacity:0.9; }
+.pb-dur { font-size:14px; opacity:0.85; margin:8px 0 22px; }
+.pb-g { display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-bottom:24px; }
+.pb-g span {
+  background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3);
+  padding:8px 16px; border-radius:30px; font-size:13px; backdrop-filter:blur(6px);
+}
+.pb-book {
+  background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.25);
+  border-radius:var(--r); padding:22px 24px; max-width:680px; margin:0 auto;
+}
+.pb-book h4 { font-size:16px; margin-bottom:10px; }
+.pb-steps { display:flex; justify-content:center; gap:6px; flex-wrap:wrap; align-items:center; }
+.pb-steps .s { background:var(--accent); padding:6px 14px; border-radius:20px; font-weight:600; font-size:14px; }
+.pb-steps .a { opacity:0.6; font-size:16px; }
+.pb-refund { margin-top:12px; font-size:13px; opacity:0.9; line-height:1.7; }
+.pb-refund b { color:var(--accent-l); }
 
-  /* ===== 行程时间线 ===== */
-  .itinerary { background: #fff; }
-  .pkg-overview {
-    background: linear-gradient(135deg, var(--bg-soft), #fff);
-    border: 1px solid var(--border); border-radius: 16px;
-    padding: 28px 32px; margin-bottom: 40px;
-  }
-  .pkg-overview h3 { color: var(--primary); font-size: 22px; margin-bottom: 14px; }
-  .pkg-overview .ov-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 16px; margin-top: 16px;
-  }
-  .ov-item { display: flex; gap: 10px; align-items: flex-start; }
-  .ov-item .icon { font-size: 22px; }
-  .ov-item .txt { font-size: 13.5px; color: var(--muted); }
-  .ov-item .txt b { display: block; color: var(--text); font-size: 14px; }
+/* ====== Packages ====== */
+.packages { display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:28px; }
+.pkg-card {
+  background:var(--card); border-radius:var(--r-lg); overflow:hidden;
+  box-shadow:var(--shadow); border:1px solid var(--border);
+  transition:transform .3s,box-shadow .3s;
+}
+.pkg-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-l); }
+.pkg-cover {
+  height:200px; position:relative;
+  background-size:cover; background-position:center;
+}
+.pkg-cover::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,0.5) 0%,transparent 60%); }
+.pkg-cover .lbl {
+  position:absolute; top:14px; left:14px; z-index:2;
+  background:var(--accent); color:#fff; padding:5px 12px; border-radius:20px; font-size:12px; font-weight:600;
+}
+.pkg-cover .badge {
+  position:absolute; top:14px; right:14px; z-index:2;
+  background:rgba(255,255,255,0.2); color:#fff; padding:4px 10px;
+  border-radius:20px; font-size:11px; backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,0.3);
+}
+.pkg-body { padding:24px; }
+.pkg-body h3 { font-size:20px; margin-bottom:6px; font-weight:700; }
+.pkg-body .slogan { color:var(--accent); font-size:13px; margin-bottom:12px; }
+.pkg-meta { display:flex; gap:16px; color:var(--muted); font-size:13px; margin-bottom:14px; flex-wrap:wrap; }
+.pkg-desc { color:var(--muted); font-size:14px; margin-bottom:16px; }
+.pkg-features { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:18px; }
+.pkg-features span {
+  background:var(--bg-s); border:1px solid var(--border); color:var(--primary-d);
+  padding:4px 10px; border-radius:10px; font-size:12px;
+}
+.pkg-btn {
+  display:inline-block; padding:11px 26px; background:var(--primary); color:#fff;
+  border-radius:30px; font-weight:600; font-size:14px; transition:all .2s; border:none; cursor:pointer;
+}
+.pkg-btn:hover { background:var(--primary-l); transform:translateY(-2px); }
 
-  .timeline { position: relative; padding-left: 46px; }
-  .timeline::before {
-    content: ''; position: absolute; left: 14px; top: 0; bottom: 0;
-    width: 3px; background: linear-gradient(180deg, var(--primary), var(--accent));
-    border-radius: 3px;
-  }
-  .day {
-    position: relative; margin-bottom: 28px;
-    background: var(--bg-soft); border-radius: 14px; padding: 22px 26px;
-    border: 1px solid var(--border);
-  }
-  .day::before {
-    content: ''; position: absolute; left: -39px; top: 26px;
-    width: 18px; height: 18px; border-radius: 50%;
-    background: var(--primary); border: 4px solid #fff;
-    box-shadow: 0 0 0 3px var(--primary);
-  }
-  .day-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
-  .day-num {
-    background: var(--accent); color: #fff; padding: 4px 14px;
-    border-radius: 14px; font-size: 13px; font-weight: 700;
-  }
-  .day-title { font-size: 17px; font-weight: 700; color: var(--primary-dark); }
-  .day-route { color: var(--muted); font-size: 13.5px; }
-  .day-meals { display: flex; gap: 10px; margin-left: auto; }
-  .meal-tag {
-    padding: 3px 10px; border-radius: 10px; font-size: 12px; font-weight: 600;
-  }
-  .meal-tag.inc { background: #e6f5f1; color: var(--primary); }
-  .meal-tag.exc { background: #f0f0f0; color: #aaa; }
-  .day-stay {
-    display: inline-block; background: #fdf2eb; color: var(--accent);
-    padding: 3px 10px; border-radius: 10px; font-size: 12px; font-weight: 600;
-    margin-top: 6px;
-  }
-  .day-content { color: #444; font-size: 14.5px; line-height: 1.8; }
-  .day-content p { margin-bottom: 8px; }
-  .day-content .spot { color: var(--primary-dark); font-weight: 600; }
-  .day-content .tip {
-    background: #fff8f0; border-left: 3px solid var(--accent);
-    padding: 8px 14px; margin-top: 10px; font-size: 13.5px; color: #8a6d4f; border-radius: 0 8px 8px 0;
-  }
+/* ====== Tabs ====== */
+.tabs { display:flex; justify-content:center; gap:12px; margin-bottom:40px; flex-wrap:wrap; }
+.tab-btn {
+  padding:10px 22px; background:#fff; border:2px solid var(--border);
+  border-radius:30px; cursor:pointer; font-size:14px; font-weight:600;
+  color:var(--muted); transition:all .25s;
+}
+.tab-btn.active { background:var(--primary); color:#fff; border-color:var(--primary); box-shadow:0 4px 14px rgba(26,122,109,0.25); }
+.tab-btn:hover:not(.active) { border-color:var(--primary); color:var(--primary); }
+.tab-panel { display:none; animation:fadeIn .4s; }
+.tab-panel.active { display:block; }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
 
-  /* ===== 亮点 ===== */
-  .highlights { background: var(--bg); }
-  .hl-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
-  .hl-card {
-    background: #fff; padding: 32px 26px; border-radius: 16px;
-    box-shadow: var(--shadow); text-align: center; transition: transform .3s;
-    border: 1px solid var(--border);
-  }
-  .hl-card:hover { transform: translateY(-6px); }
-  .hl-icon { font-size: 42px; margin-bottom: 16px; }
-  .hl-card h4 { font-size: 17px; color: var(--primary); margin-bottom: 10px; }
-  .hl-card p { color: var(--muted); font-size: 14px; }
+/* ====== Itinerary ====== */
+.itinerary { background:#fff; }
+.pkg-ov {
+  background:var(--bg-s); border:1px solid var(--border); border-radius:var(--r);
+  padding:24px 26px; margin-bottom:36px;
+}
+.pkg-ov h3 { color:var(--primary); font-size:20px; margin-bottom:10px; }
+.pkg-ov > p { color:var(--muted); font-size:14px; }
+.ov-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:14px; margin-top:14px; }
+.ov-item { display:flex; gap:8px; align-items:flex-start; }
+.ov-item .ic { font-size:20px; } .ov-item .t { font-size:13px; color:var(--muted); }
+.ov-item .t b { display:block; color:var(--text); font-size:14px; }
 
-  /* ===== 费用/标准 ===== */
-  .fees { background: #fff; }
-  .fee-tabs { display: flex; justify-content: center; gap: 12px; margin-bottom: 36px; flex-wrap: wrap; }
-  .fee-tab {
-    padding: 10px 24px; border-radius: 24px; cursor: pointer;
-    background: var(--bg); border: 1px solid var(--border); font-size: 14px;
-    font-weight: 600; color: var(--muted); transition: all .2s;
-  }
-  .fee-tab.active { background: var(--primary); color: #fff; border-color: var(--primary); }
-  .fee-panel { display: none; }
-  .fee-panel.active { display: block; animation: fadeIn .4s; }
-  .fee-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-  .fee-box { padding: 32px; border-radius: 16px; border: 2px solid #eee; }
-  .fee-box.include { border-color: var(--primary); background: #f7fcfb; }
-  .fee-box.exclude { border-color: #e0e0e0; background: #fafafa; }
-  .fee-box h4 { font-size: 19px; margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
-  .fee-box.include h4 { color: var(--primary); }
-  .fee-box.exclude h4 { color: #999; }
-  .fee-box ul { list-style: none; }
-  .fee-box li {
-    padding: 9px 0; padding-left: 30px; position: relative; color: #555; font-size: 14.5px;
-    border-bottom: 1px dashed #e8e2d8;
-  }
-  .fee-box li:last-child { border-bottom: none; }
-  .fee-box.include li::before {
-    content: '✓'; position: absolute; left: 0; color: var(--primary); font-weight: 700; font-size: 16px;
-  }
-  .fee-box.exclude li::before {
-    content: '✕'; position: absolute; left: 0; color: #bbb; font-weight: 700;
-  }
+.timeline { position:relative; padding-left:36px; }
+.timeline::before {
+  content:''; position:absolute; left:12px; top:0; bottom:0; width:3px;
+  background:linear-gradient(180deg,var(--primary),var(--accent)); border-radius:3px;
+}
+.day {
+  position:relative; margin-bottom:24px; background:var(--bg-s);
+  border-radius:var(--r); padding:20px 22px; border:1px solid var(--border);
+}
+.day::before {
+  content:''; position:absolute; left:-31px; top:22px; width:16px; height:16px;
+  border-radius:50%; background:var(--primary); border:4px solid #fff;
+  box-shadow:0 0 0 3px var(--primary);
+}
+.day-img {
+  width:100%; height:180px; border-radius:var(--r-sm); margin-bottom:14px;
+  background-size:cover; background-position:center; position:relative;
+}
+.day-img::after {
+  content:''; position:absolute; inset:0; border-radius:var(--r-sm);
+  background:linear-gradient(to top,rgba(0,0,0,0.25) 0%,transparent 50%);
+}
+.day-head { display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap; }
+.day-num { background:var(--accent); color:#fff; padding:3px 12px; border-radius:12px; font-size:12px; font-weight:700; }
+.day-title { font-size:16px; font-weight:700; color:var(--primary-d); }
+.day-route { color:var(--muted); font-size:13px; width:100%; margin-top:2px; }
+.day-meals { display:flex; gap:8px; }
+.meal-tag { padding:3px 9px; border-radius:8px; font-size:11px; font-weight:600; }
+.meal-tag.inc { background:#e2f5f0; color:var(--primary); } .meal-tag.exc { background:#f0f0f0; color:#aaa; }
+.day-stay { display:inline-block; background:#fdf2eb; color:var(--accent); padding:3px 10px; border-radius:8px; font-size:12px; font-weight:600; margin-top:6px; }
+.day-content { color:#444; font-size:14px; line-height:1.8; margin-top:8px; }
+.day-content p { margin-bottom:6px; }
+.day-content .spot { color:var(--primary-d); font-weight:600; }
+.day-content .tip {
+  background:#fff8f0; border-left:3px solid var(--accent);
+  padding:8px 14px; margin-top:8px; font-size:13px; color:#8a6d4f; border-radius:0 8px 8px 0;
+}
 
-  .standards { margin-top: 40px; }
-  .std-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-  .std-card {
-    background: var(--bg-soft); border: 1px solid var(--border); border-radius: 14px; padding: 22px;
-  }
-  .std-card h5 { color: var(--accent); font-size: 15px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-  .std-card p { color: #555; font-size: 14px; }
+/* ====== Highlights ====== */
+.hl-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; }
+.hl-card {
+  background:#fff; padding:28px 22px; border-radius:var(--r); box-shadow:var(--shadow);
+  text-align:center; transition:transform .3s; border:1px solid var(--border);
+}
+.hl-card:hover { transform:translateY(-4px); }
+.hl-icon { font-size:36px; margin-bottom:12px; }
+.hl-card h4 { font-size:16px; color:var(--primary); margin-bottom:8px; }
+.hl-card p { color:var(--muted); font-size:13px; }
 
-  /* ===== 注意事项 ===== */
-  .notice { background: var(--bg); }
-  .notice-box {
-    background: #fff; border-radius: 16px; padding: 36px;
-    box-shadow: var(--shadow); border: 1px solid var(--border);
-  }
-  .notice-box h4 { color: var(--primary); font-size: 19px; margin-bottom: 20px; }
-  .notice-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
-  .notice-list li {
-    list-style: none; padding: 12px 16px; background: var(--bg-soft);
-    border-radius: 10px; font-size: 14px; color: #555; line-height: 1.7;
-    border-left: 3px solid var(--accent);
-  }
+/* ====== Fees ====== */
+.fee-tabs { display:flex; justify-content:center; gap:10px; margin-bottom:30px; flex-wrap:wrap; }
+.fee-tab {
+  padding:9px 20px; border-radius:24px; cursor:pointer; background:var(--bg-s);
+  border:1px solid var(--border); font-size:14px; font-weight:600; color:var(--muted); transition:all .2s;
+}
+.fee-tab.active { background:var(--primary); color:#fff; border-color:var(--primary); }
+.fee-panel { display:none; } .fee-panel.active { display:block; animation:fadeIn .4s; }
+.fee-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.fee-box { padding:28px; border-radius:var(--r); border:2px solid #eee; }
+.fee-box.inc { border-color:var(--primary); background:#f7fcfb; } .fee-box.exc { border-color:#e0e0e0; background:#fafafa; }
+.fee-box h4 { font-size:18px; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+.fee-box.inc h4 { color:var(--primary); } .fee-box.exc h4 { color:#999; }
+.fee-incl-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:8px; list-style:none; }
+.fee-incl-list li {
+  padding:10px 14px; background:#f7fcfb; border-radius:8px; font-size:14px; color:#444;
+  border-left:3px solid var(--primary); display:flex; align-items:center; gap:6px;
+}
+.fee-incl-list li .emoji { font-size:18px; flex-shrink:0; }
+.fee-box.exc ul { list-style:none; }
+.fee-box.exc li {
+  padding:8px 0; padding-left:28px; position:relative; color:#555; font-size:14px;
+  border-bottom:1px dashed #e8e2d8;
+}
+.fee-box.exc li:last-child { border-bottom:none; }
+.fee-box.exc li::before { content:'✕'; position:absolute; left:0; color:#bbb; font-weight:700; }
+.standards { margin-top:32px; }
+.std-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; }
+.std-card { background:var(--bg-s); border:1px solid var(--border); border-radius:var(--r-sm); padding:18px; }
+.std-card h5 { color:var(--accent); font-size:14px; margin-bottom:6px; }
+.std-card p { color:#555; font-size:13px; }
 
-  /* ===== 联系 ===== */
-  .contact {
-    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 60%, var(--primary-light) 100%);
-    color: #fff; text-align: center;
-  }
-  .contact h2 { font-size: 34px; margin-bottom: 14px; }
-  .contact p { opacity: 0.9; margin-bottom: 36px; font-size: 16px; }
-  .contact-info { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
-  .contact-info div {
-    background: rgba(255,255,255,0.14); padding: 22px 34px;
-    border-radius: 14px; backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,0.2);
-    min-width: 180px;
-  }
-  .contact-info .label { font-size: 13px; opacity: 0.8; }
-  .contact-info .value { font-size: 20px; font-weight: 700; margin-top: 6px; }
+/* ====== Notice ====== */
+.notice-box { background:#fff; border-radius:var(--r); padding:32px; box-shadow:var(--shadow); border:1px solid var(--border); }
+.notice-box h4 { color:var(--primary); font-size:18px; margin-bottom:16px; }
+.notice-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:12px; }
+.notice-list li {
+  list-style:none; padding:10px 14px; background:var(--bg-s); border-radius:8px;
+  font-size:13px; color:#555; line-height:1.6; border-left:3px solid var(--accent);
+}
 
-  footer { background: #142323; color: #888; text-align: center; padding: 28px; font-size: 13.5px; }
-  footer a { color: var(--accent-light); text-decoration: none; }
+/* ====== Contact ====== */
+.contact { color:#fff; text-align:center; position:relative; overflow:hidden;
+  background:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Yunnan%20mountains%20misty%20clouds%20sea%20ethereal%20landscape%20soft%20light%20zen&image_size=landscape_16_9') center/cover no-repeat;
+}
+.contact::after { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(13,74,66,0.85) 0%,rgba(26,122,109,0.8) 100%); }
+.contact .container { position:relative; z-index:1; }
+.contact h2 { font-size:clamp(28px,6vw,34px); margin-bottom:12px; }
+.contact .c-price { color:var(--accent-l); font-size:clamp(22px,5vw,28px); font-weight:800; }
+.contact .c-info { font-size:14px; opacity:0.9; margin:14px 0 28px; line-height:1.8; }
+.contact-info { display:flex; justify-content:center; gap:24px; flex-wrap:wrap; }
+.contact-info div {
+  background:rgba(255,255,255,0.12); padding:18px 28px; border-radius:12px;
+  backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.2); min-width:160px;
+}
+.contact-info .label { font-size:12px; opacity:0.8; }
+.contact-info .value { font-size:18px; font-weight:700; margin-top:4px; }
 
-  /* ===== 价格横幅 ===== */
-  .price-banner {
-    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
-    color: #fff; padding: 48px 32px; text-align: center;
-    position: relative; overflow: hidden;
-  }
-  .price-banner::before {
-    content: ''; position: absolute; top: -50%; right: -10%;
-    width: 300px; height: 300px; border-radius: 50%;
-    background: rgba(232,145,90,0.15);
-  }
-  .price-banner .pb-dest {
-    font-size: 22px; font-weight: 700; margin-bottom: 16px; letter-spacing: 2px;
-  }
-  .price-banner .pb-price {
-    font-size: 56px; font-weight: 800; color: var(--accent-light);
-    line-height: 1.1; margin-bottom: 6px;
-  }
-  .price-banner .pb-price small { font-size: 22px; font-weight: 600; }
-  .price-banner .pb-price .unit { font-size: 24px; color: #fff; opacity: 0.9; }
-  .price-banner .pb-dur { font-size: 16px; opacity: 0.85; margin-bottom: 28px; }
-  .pb-guarantees {
-    display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
-    margin-bottom: 28px; position: relative; z-index: 1;
-  }
-  .pb-guarantees span {
-    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
-    padding: 10px 20px; border-radius: 30px; font-size: 14px; backdrop-filter: blur(6px);
-  }
-  .pb-booking {
-    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
-    border-radius: 16px; padding: 24px 32px; max-width: 720px;
-    margin: 0 auto; position: relative; z-index: 1;
-  }
-  .pb-booking h4 { font-size: 17px; margin-bottom: 12px; }
-  .pb-booking .steps {
-    display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;
-    align-items: center; font-size: 15px;
-  }
-  .pb-booking .step {
-    background: var(--accent); padding: 6px 16px; border-radius: 20px; font-weight: 600;
-  }
-  .pb-booking .arrow { opacity: 0.6; font-size: 18px; }
-  .pb-refund {
-    margin-top: 14px; font-size: 14px; opacity: 0.9; line-height: 1.7;
-  }
-  .pb-refund b { color: var(--accent-light); }
+footer { background:#0a1a1a; color:#666; text-align:center; padding:24px 20px; font-size:13px; }
 
-  /* ===== 费用包含(emoji列表) ===== */
-  .fee-incl-list {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 10px; list-style: none;
-  }
-  .fee-incl-list li {
-    padding: 12px 16px; background: #f7fcfb; border-radius: 10px;
-    font-size: 14.5px; color: #444; border-left: 3px solid var(--primary);
-    display: flex; align-items: center; gap: 8px;
-  }
-  .fee-incl-list li .emoji { font-size: 20px; flex-shrink: 0; }
+/* ====== Floating Guide Widget ====== */
+.guide-fab {
+  position:fixed; right:16px; bottom:16px; z-index:300;
+  width:56px; height:56px; border-radius:50%;
+  background:linear-gradient(135deg,var(--primary),var(--primary-l));
+  box-shadow:0 4px 20px rgba(26,122,109,0.4); cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition:all .3s; border:3px solid #fff;
+}
+.guide-fab:hover { transform:scale(1.08); box-shadow:0 6px 28px rgba(26,122,109,0.5); }
+.guide-fab .fab-icon { font-size:24px; }
+.guide-fab .fab-pulse {
+  position:absolute; inset:-3px; border-radius:50%; border:3px solid var(--primary);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse { 0%{opacity:0.6;transform:scale(1)} 100%{opacity:0;transform:scale(1.5)} }
 
-  /* ===== 响应式 ===== */
-  @media (max-width: 900px) {
-    .nav-links { display: none; }
-    .packages { grid-template-columns: 1fr; }
-    .fee-grid { grid-template-columns: 1fr; }
+.guide-panel {
+  position:fixed; right:16px; bottom:80px; z-index:300;
+  width:320px; max-width:calc(100vw - 32px);
+  background:#fff; border-radius:var(--r-lg); box-shadow:0 12px 48px rgba(0,0,0,0.18);
+  overflow:hidden; transform:translateY(20px) scale(0.95); opacity:0; pointer-events:none;
+  transition:all .3s; border:1px solid var(--border);
+}
+.guide-panel.show { transform:translateY(0) scale(1); opacity:1; pointer-events:auto; }
+.guide-panel-head {
+  background:linear-gradient(135deg,var(--primary-d),var(--primary));
+  color:#fff; padding:20px 24px; text-align:center; position:relative;
+}
+.guide-panel-head .avatar {
+  width:64px; height:64px; border-radius:50%; border:3px solid rgba(255,255,255,0.4);
+  margin:0 auto 10px;
+  background:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20tour%20guide%20portrait%20friendly%20smiling%20Chinese%20woman%20wearing%20headset%20casual%20outdoor%20clothing&image_size=square_hd') center/cover;
+}
+.guide-panel-head h4 { font-size:17px; margin-bottom:4px; }
+.guide-panel-head p { font-size:13px; opacity:0.85; }
+.guide-close {
+  position:absolute; top:12px; right:12px; background:rgba(255,255,255,0.2);
+  border:none; color:#fff; width:28px; height:28px; border-radius:50%;
+  cursor:pointer; font-size:16px; display:flex; align-items:center; justify-content:center;
+}
+.guide-panel-body { padding:20px 24px; }
+.guide-info-item {
+  display:flex; align-items:center; gap:12px; padding:10px 0;
+  border-bottom:1px solid var(--border);
+}
+.guide-info-item:last-child { border-bottom:none; }
+.guide-info-item .gi-icon { font-size:22px; flex-shrink:0; }
+.guide-info-item .gi-content .gi-label { font-size:12px; color:var(--muted); }
+.guide-info-item .gi-content .gi-value { font-size:15px; font-weight:600; color:var(--text); }
+.guide-contact-btn {
+  display:block; width:100%; margin-top:14px; padding:11px; text-align:center;
+  background:var(--accent); color:#fff; border-radius:30px; font-weight:600;
+  font-size:15px; border:none; cursor:pointer; transition:all .2s;
+}
+.guide-contact-btn:hover { background:var(--accent-l); transform:translateY(-1px); }
+.guide-qr {
+  text-align:center; margin-top:12px; padding:12px; background:var(--bg-s);
+  border-radius:var(--r-sm); border:1px solid var(--border);
+}
+.guide-qr p { font-size:12px; color:var(--muted); margin-bottom:8px; }
+
+/* ====== Mobile ====== */
+@media (max-width:768px) {
+  .nav-links { display:none; }
+  .nav-mobile-btn {
+    display:flex; flex-direction:column; gap:4px; cursor:pointer; padding:6px;
+    background:none; border:none;
   }
-  @media (max-width: 600px) {
-    section { padding: 64px 20px; }
-    .day-meals { margin-left: 0; width: 100%; }
-    .timeline { padding-left: 36px; }
-    .day::before { left: -29px; }
-    .pkg-btn.outline { margin-left: 0; margin-top: 10px; }
-  }
+  .nav-mobile-btn span { width:22px; height:2px; background:var(--text); border-radius:2px; }
+  
+  section { padding:60px 16px; }
+  .packages { grid-template-columns:1fr; }
+  .fee-grid { grid-template-columns:1fr; }
+  .day-img { height:150px; }
+  .day { padding:18px; }
+  .timeline { padding-left:28px; }
+  .day::before { left:-23px; width:14px; height:14px; }
+  .day-meals { width:100%; }
+  .guide-panel { width:calc(100vw - 32px); max-width:360px; }
+  .guide-fab { right:14px; bottom:14px; }
+  .notice-list { grid-template-columns:1fr; }
+  .notice-box { padding:24px 18px; }
+}
+@media (max-width:420px) {
+  .hero h1 { letter-spacing:2px; }
+  .hero-tags span { font-size:12px; padding:6px 12px; }
+  .pkg-body { padding:20px; }
+  .fee-box { padding:20px; }
+}
 </style>
 </head>
 <body>
 
-<!-- 导航 -->
+<!-- Nav -->
 <nav class="nav">
-  <div class="nav-inner">
+  <div class="nav-in">
     <div class="logo"><span class="dot"></span>彩云之南</div>
     <ul class="nav-links">
       <li><a href="#home">首页</a></li>
-      <li><a href="#packages">精选行程</a></li>
+      <li><a href="#packages">行程</a></li>
       <li><a href="#itinerary">详细行程</a></li>
-      <li><a href="#highlights">行程亮点</a></li>
-      <li><a href="#fees">费用标准</a></li>
-      <li><a href="#notice">温馨提示</a></li>
-      <li><a href="#contact">联系预订</a></li>
+      <li><a href="#highlights">亮点</a></li>
+      <li><a href="#fees">费用</a></li>
+      <li><a href="#contact">预订</a></li>
     </ul>
+    <button class="nav-mobile-btn" onclick="document.getElementById('mobile-menu').classList.toggle('show')">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
 <!-- Hero -->
 <header class="hero" id="home">
-  <div class="hero-content">
-    <span class="eyebrow">KUNMING · DALI · LIJIANG</span>
-    <h1>彩云<span class="accent">之南</span></h1>
-    <p>昆明 · 大理 · 丽江 — 6日纯玩深度游<br>苍山雪、洱海月、古城韵、雪山情，邂逅最美云南</p>
+  <div class="hero-c">
+    <span class="tag">KUNMING · DALI · LIJIANG</span>
+    <h1>彩云<span class="a">之南</span></h1>
+    <p>昆明 · 大理 · 丽江 — 6日纯玩深度游<br>苍山雪、洱海月、古城韵、雪山情</p>
     <div class="hero-tags">
       <span>🏔️ 玉龙雪山</span>
       <span>🌊 洱海风光</span>
@@ -429,432 +432,333 @@
       <span>👥 2-15人小团</span>
     </div>
   </div>
-  <div class="scroll-hint">向下滚动 ↓</div>
 </header>
 
-<!-- 价格横幅 -->
+<!-- Price Banner -->
 <section class="price-banner">
-  <div class="pb-dest">🌴 昆明 🌴 大理 🌴 丽江 🌴 &nbsp;六天五晚</div>
-  <div class="pb-price">1880<small> 元</small><span class="unit">/人</span></div>
+  <div class="pb-dest">🌴 昆明 🌴 大理 🌴 丽江 🌴 六天五晚</div>
+  <div class="pb-price">1880<small> 元</small><span class="u">/人</span></div>
   <div class="pb-dur">全程纯玩 · 2-15人精品小团 · 含吃住行门票</div>
-  <div class="pb-guarantees">
+  <div class="pb-g">
     <span>📅 二年内任意时间出行</span>
     <span>🚫 节假日不涨价</span>
     <span>🕐 出游时间不限制</span>
     <span>💰 不来定金全额退还</span>
   </div>
-  <div class="pb-booking">
+  <div class="pb-book">
     <h4>🔨 预订方式</h4>
-    <div class="steps">
-      <span class="step">姓名</span>
-      <span class="arrow">+</span>
-      <span class="step">身份证号</span>
-      <span class="arrow">+</span>
-      <span class="step">电话</span>
-      <span class="arrow">+</span>
-      <span class="step">200元/人定金</span>
+    <div class="pb-steps">
+      <span class="s">姓名</span><span class="a">+</span>
+      <span class="s">身份证号</span><span class="a">+</span>
+      <span class="s">电话</span><span class="a">+</span>
+      <span class="s">200元/人定金</span>
     </div>
     <div class="pb-refund">
-      预定成功，<b>二年内任何时间出行都有效</b>，出游时间不限制，节假日不涨价。<br>
-      <b>不来200定金全额退还</b>，零风险预订，放心锁定优惠价格！
+      预定成功，<b>二年内任何时间出行都有效</b>，节假日不涨价。<br>
+      <b>不来200定金全额退还</b>，零风险预订！
     </div>
   </div>
 </section>
 
-<!-- 产品卡片 -->
-<section id="packages">
+<!-- Packages -->
+<section id="packages" class="sec-bg">
+  <div class="bg-img" style="background-image:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Yunnan%20Dali%20ancient%20city%20street%20blue%20sky%20flowers%20and%20traditional%20architecture%20tourism%20photography&image_size=landscape_16_9')"></div>
+  <div class="bg-overlay"></div>
   <div class="container">
-    <div class="section-title">
-      <div class="eyebrow">FEATURED TOURS</div>
+    <div class="sec-title">
+      <div class="eb">FEATURED TOURS</div>
       <h2>精选行程</h2>
       <p>两条精品路线，总有一款适合你</p>
       <div class="bar"></div>
     </div>
     <div class="packages">
-
-      <!-- 产品一 -->
       <div class="pkg-card">
-        <div class="pkg-cover p1">
-          <span class="pkg-label">2-15人精品小团</span>
-          <span class="pkg-badge">悦美系列</span>
+        <div class="pkg-cover" style="background-image:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Luxury%20yacht%20on%20Erhai%20lake%20Dali%20Yunnan%20sunset%20golden%20water%20mountains%20elegant%20travel&image_size=landscape_4_3')">
+          <span class="lbl">2-15人小团</span><span class="badge">悦美系列</span>
         </div>
         <div class="pkg-body">
           <h3>云十五·悦美 昆大丽6日纯玩游</h3>
           <div class="slogan">兼顾美景与舒适，把度假感融入每一段风景</div>
-          <div class="pkg-meta">
-            <span>📅 6天5晚</span>
-            <span>👥 2-15成人小团</span>
-            <span>🚫 纯玩无购物</span>
-          </div>
-          <p class="pkg-desc">携程3钻酒店+首住升级1晚四钻+大理海景房，彝族/白族/纳西族特色餐，洱海私人游艇、音乐大篷车、网红S湾旅拍。</p>
-          <div class="pkg-features">
-            <span>洱海私人游艇</span>
-            <span>音乐大篷车</span>
-            <span>网红S湾旅拍</span>
-            <span>威楚传奇</span>
-            <span>四季盲盒</span>
-          </div>
-          <a href="#itinerary" class="pkg-btn" onclick="switchTab('pkg1')">查看详情</a>
+          <div class="pkg-meta"><span>📅 6天5晚</span><span>👥 2-15成人</span><span>🚫 纯玩</span></div>
+          <p class="pkg-desc">携程3钻+首住1晚四钻+大理海景房，洱海私人游艇、音乐大篷车、网红S湾旅拍。</p>
+          <div class="pkg-features"><span>私人游艇</span><span>音乐大篷车</span><span>S湾旅拍</span><span>威楚传奇</span><span>四季盲盒</span></div>
+          <a href="#itinerary" class="pkg-btn" onclick="switchTab('pkg1');return false">查看详情</a>
         </div>
       </div>
-
-      <!-- 产品二 -->
       <div class="pkg-card">
-        <div class="pkg-cover p2">
-          <span class="pkg-label">2-15人精品小团</span>
-          <span class="pkg-badge">稻梦系列</span>
+        <div class="pkg-cover" style="background-image:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Dali%20Yunnan%20Erhai%20lake%20cycling%20eco%20corridor%20blue%20water%20blue%20sky%20happy%20travelers&image_size=landscape_4_3')">
+          <span class="lbl">2-15人小团</span><span class="badge">稻梦系列</span>
         </div>
         <div class="pkg-body">
           <h3>稻梦 昆大丽6天5晚</h3>
           <div class="slogan">每天8点出发，不赶路，慢慢玩</div>
-          <div class="pkg-meta">
-            <span>📅 6天5晚</span>
-            <span>👥 2-15人小团</span>
-            <span>🚫 纯玩无购物</span>
-          </div>
-          <p class="pkg-desc">首住4钻+大理海景1晚+丽江民宿，彝族长街宴、鲜花宴、过桥米线，喜洲音乐酒吧车、非遗甲马手作、航拍旅拍。</p>
-          <div class="pkg-features">
-            <span>彝族长街宴</span>
-            <span>浪漫鲜花宴</span>
-            <span>非遗甲马体验</span>
-            <span>航拍+旅拍</span>
-            <span>洱海骑行</span>
-          </div>
-          <a href="#itinerary" class="pkg-btn" onclick="switchTab('pkg2')">查看详情</a>
+          <div class="pkg-meta"><span>📅 6天5晚</span><span>👥 2-15人</span><span>🚫 纯玩</span></div>
+          <p class="pkg-desc">首住4钻+大理海景1晚+丽江民宿，彝族长街宴、鲜花宴、非遗甲马手作、航拍旅拍。</p>
+          <div class="pkg-features"><span>长街宴</span><span>鲜花宴</span><span>非遗甲马</span><span>航拍旅拍</span><span>洱海骑行</span></div>
+          <a href="#itinerary" class="pkg-btn" onclick="switchTab('pkg2');return false">查看详情</a>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- 详细行程 -->
+<!-- Itinerary -->
 <section class="itinerary" id="itinerary">
   <div class="container">
-    <div class="section-title">
-      <div class="eyebrow">DETAILED ITINERARY</div>
+    <div class="sec-title">
+      <div class="eb">DETAILED ITINERARY</div>
       <h2>详细行程</h2>
       <p>每日安排，一目了然</p>
       <div class="bar"></div>
     </div>
-
-    <!-- Tab 切换 -->
     <div class="tabs">
-      <button class="tab-btn active" onclick="switchTab('pkg1')">云十五·悦美 昆大丽6日</button>
-      <button class="tab-btn" onclick="switchTab('pkg2')">稻梦 昆大丽6天5晚</button>
+      <button class="tab-btn active" onclick="switchTab('pkg1')">云十五·悦美 6日</button>
+      <button class="tab-btn" onclick="switchTab('pkg2')">稻梦 6天5晚</button>
     </div>
 
-    <!-- ====== 产品一 ====== -->
+    <!-- Pkg 1 -->
     <div class="tab-panel active" id="pkg1">
-      <div class="pkg-overview">
+      <div class="pkg-ov">
         <h3>云十五·悦美 昆大丽6日纯玩游（2-15人小团）</h3>
-        <p style="color:var(--muted);font-size:14.5px;">产品理念：兼顾美景与舒适，用轻松的步调邂逅云南，在山水与烟火间，把度假感融入每一段风景，尽享旅途的惬意与自在。让度假不止打卡，更有治愈与享受。</p>
+        <p>兼顾美景与舒适，用轻松的步调邂逅云南，在山水与烟火间，把度假感融入每一段风景。</p>
         <div class="ov-grid">
-          <div class="ov-item"><div class="icon">🏨</div><div class="txt"><b>住宿标准</b>携程3钻+首住1晚四钻+大理1晚海景酒店</div></div>
-          <div class="ov-item"><div class="icon">🍜</div><div class="txt"><b>用餐标准</b>5早5正（正餐30元/人）</div></div>
-          <div class="ov-item"><div class="icon">👥</div><div class="txt"><b>成团人数</b>2-15成人精品小团</div></div>
-          <div class="ov-item"><div class="icon">🚗</div><div class="txt"><b>出发时间</b>每天早上8:00</div></div>
+          <div class="ov-item"><div class="ic">🏨</div><div class="t"><b>住宿</b>携程3钻+1晚四钻+大理海景</div></div>
+          <div class="ov-item"><div class="ic">🍜</div><div class="t"><b>用餐</b>5早5正（正餐30元/人）</div></div>
+          <div class="ov-item"><div class="ic">👥</div><div class="t"><b>人数</b>2-15成人精品小团</div></div>
+          <div class="ov-item"><div class="ic">🚗</div><div class="t"><b>出发</b>每天早上8:00</div></div>
         </div>
       </div>
-
       <div class="timeline">
         <div class="day">
+          <div class="day-img" style="background-image:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Kunming%20city%20Yunnan%20Green%20Lake%20park%20spring%20flowers%20seagulls%20sunny%20day%20travel&image_size=landscape_4_3')"></div>
           <div class="day-head">
-            <span class="day-num">Day 1</span>
-            <span class="day-title">各地 → 昆明</span>
+            <span class="day-num">Day 1</span><span class="day-title">各地 → 昆明</span>
             <span class="day-route">起始地乘机 → 昆明长水机场 → 入住酒店</span>
-            <div class="day-meals">
-              <span class="meal-tag exc">早 ×</span><span class="meal-tag exc">中 ×</span><span class="meal-tag exc">晚 ×</span>
-            </div>
+            <div class="day-meals"><span class="meal-tag exc">早 ×</span><span class="meal-tag exc">中 ×</span><span class="meal-tag exc">晚 ×</span></div>
           </div>
           <span class="day-stay">🏨 住宿：昆明</span>
           <div class="day-content">
-            <p>各地旅客乘飞机抵达昆明，由商务专车接至安排的酒店办理入住。时间允许的情况下，推荐自行前往游览昆明地标"<span class="spot">陆军讲武堂</span>"，品尝云南特色小吃：特色臭豆腐、小锅米线、各类果汁，感受"春城"气息。</p>
+            <p>各地旅客乘飞机抵达昆明，由商务专车接至安排的酒店办理入住。时间允许推荐自行游览"<span class="spot">陆军讲武堂</span>"，品尝臭豆腐、小锅米线、各类果汁，感受"春城"气息。</p>
           </div>
         </div>
-
         <div class="day">
+          <div class="day-img" style="background-image:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Kunming%20Xishan%20mountain%20West%20Hill%20Dragon%20Gate%20scenic%20area%20Dianchi%20lake%20view%20from%20top%20Yunnan%20travel&image_size=landscape_4_3')"></div>
           <div class="day-head">
-            <span class="day-num">Day 2</span>
-            <span class="day-title">昆明 → 楚雄</span>
-            <span class="day-route">西山风景区 → 茶马花街 → 四季盲盒 → 楚雄（威楚传奇+长街宴+祭火大典）</span>
-            <div class="day-meals">
-              <span class="meal-tag inc">早 √</span><span class="meal-tag exc">中 ×</span><span class="meal-tag inc">晚 √</span>
-            </div>
+            <span class="day-num">Day 2</span><span class="day-title">昆明 → 楚雄</span>
+            <span class="day-route">西山风景区 → 茶马花街 → 四季盲盒 → 威楚传奇+长街宴+祭火大典</span>
+            <div class="day-meals"><span class="meal-tag inc">早 √</span><span class="meal-tag exc">中 ×</span><span class="meal-tag inc">晚 √</span></div>
           </div>
           <span class="day-stay">🏨 住宿：楚雄</span>
           <div class="day-content">
-            <p>酒店早餐后8:00乘车赴<span class="spot">西山风景区</span>（游览约90分钟，不含景区环保大巴+索道+电瓶车60元/人）。西山峰峦起伏，林木苍翠，远眺如"卧佛山"又称"睡美人"。随后前往网红打卡地<span class="spot">茶马花街</span>（约30分钟），自由品尝昆明地道豆花米线、烧烤、红糖粑粑等，中餐自由安排。</p>
-            <p>惊喜体验<span class="spot">旅游四季盲盒</span>（约45分钟，随机属性），以全年季节限定旅行体验、目的地盲选或网红打卡项目，盲盒打开地可能在昆明、大理或丽江。</p>
-            <p>之后乘车赴"中国火城"——楚雄，观看大型户外实景沉浸式演艺秀<span class="spot">《威楚传奇》</span>，剧本改编自楚雄彝族历史传说，讲述彝族姑娘阿表妹与小伙阿表哥的感人爱情故事，集文化、演艺、餐饮为一体。入住楚雄酒店。</p>
+            <p>早餐后8:00乘车赴<span class="spot">西山风景区</span>（约90分钟，不含环保大巴+索道+电瓶车60元/人）。西山峰峦起伏，远眺如"卧佛山"又称"睡美人"。随后前往<span class="spot">茶马花街</span>自由品尝豆花米线、烧烤、红糖粑粑等。</p>
+            <p>惊喜体验<span class="spot">旅游四季盲盒</span>（约45分钟），随机属性，盲盒打开地可能在昆明、大理或丽江。</p>
+            <p>之后乘车赴楚雄，观看大型户外实景沉浸式演艺秀<span class="spot">《威楚传奇》</span>，讲述彝族姑娘阿表妹与小伙阿表哥的感人爱情故事，集文化、演艺、餐饮为一体。入住楚雄酒店。</p>
           </div>
         </div>
-
         <div class="day">
+          <div class="day-img" style="background-image:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Dali%20Santorini%20Ideal%20Bay%20Erhai%20lake%20blue%20white%20Mediterranean%20architecture%20romantic%20sunset%20Yunnan%20travel&image_size=landscape_4_3')"></div>
           <div class="day-head">
-            <span class="day-num">Day 3</span>
-            <span class="day-title">大理 · 洱海深度游</span>
+            <span class="day-num">Day 3</span><span class="day-title">大理 · 洱海深度游</span>
             <span class="day-route">圣托里尼·理想邦 → 洱海私人游艇 → 音乐大篷车 → 网红S湾（旅拍）</span>
-            <div class="day-meals">
-              <span class="meal-tag inc">早 √</span><span class="meal-tag inc">中 √</span><span class="meal-tag inc">晚 √</span>
-            </div>
+            <div class="day-meals"><span class="meal-tag inc">早 √</span><span class="meal-tag inc">中 √</span><span class="meal-tag inc">晚 √</span></div>
           </div>
           <span class="day-stay">🏨 住宿：大理（海景酒店）</span>
           <div class="day-content">
-            <p>早餐后8:00乘车前往大理，游览<span class="spot">圣托里尼·理想邦</span>（约60分钟）。直面苍山洱海，地中海蓝白相间色调，不出国门体验希腊风情，绝美大片直出。</p>
-            <p>午餐后尊享乘坐明星同款<span class="spot">洱海私人游艇</span>（约30分钟），跟随"跑男"脚步，在专属游艇上与洱海近距离接触，观苍洱山水，看"金梭烟云"。</p>
-            <p>随后乘坐<span class="spot">音乐大篷车</span>（专业民谣歌手），移动的音乐主题巡游车，每台车配专职民谣驻唱歌手，可点歌也可自己唱歌。</p>
-            <p>游览<span class="spot">网红S湾</span>（赠送时尚旅拍，每组家庭赠8张电子版照片，约60分钟），每一步都是风景，可散步或骑行，看潮起潮落、云卷云舒。</p>
+            <p>早餐后8:00前往大理，游览<span class="spot">圣托里尼·理想邦</span>（约60分钟），直面苍山洱海，地中海蓝白相间色调，不出国门体验希腊风情。</p>
+            <p>午餐后尊享<span class="spot">洱海私人游艇</span>（约30分钟），跟随"跑男"脚步，观苍洱山水，看"金梭烟云"。</p>
+            <p>乘坐<span class="spot">音乐大篷车</span>（专业民谣歌手），移动的音乐主题巡游车，可点歌也可自己唱歌。</p>
+            <p>游览<span class="spot">网红S湾</span>（赠送旅拍，每组家庭赠8张电子照片，约60分钟），可散步或骑行。</p>
             <p>晚餐欣赏非遗传承美食大秀<span class="spot">《南涧跳菜》</span>，后入住大理酒店。</p>
           </div>
         </div>
-
         <div class="day">
+          <div class="day-img" style="background-image:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Yulong%20Snow%20Mountain%20Lijiang%20Yunnan%20Jade%20Dragon%20Snow%20Mountain%20snow%20peaks%20blue%20sky%20clouds%20majestic%20alpine%20scenery&image_size=landscape_4_3')"></div>
           <div class="day-head">
-            <span class="day-num">Day 4</span>
-            <span class="day-title">大理 → 丽江</span>
+            <span class="day-num">Day 4</span><span class="day-title">大理 → 丽江</span>
             <span class="day-route">大理古城 → 玉龙雪山（云杉坪索道）→ 蓝月谷 → 丽江古城</span>
-            <div class="day-meals">
-              <span class="meal-tag inc">早 √</span><span class="meal-tag inc">中 √</span><span class="meal-tag exc">晚 ×</span>
-            </div>
+            <div class="day-meals"><span class="meal-tag inc">早 √</span><span class="meal-tag inc">中 √</span><span class="meal-tag exc">晚 ×</span></div>
           </div>
           <span class="day-stay">🏨 住宿：丽江</span>
           <div class="day-content">
-            <p>早餐后8:00乘车游览<span class="spot">大理古城</span>（约120分钟，开放式古城自由活动）。漫步青石街道，品味风花雪月之地的惬意与感动。</p>
-            <p>午餐后前往丽江游览国家5A级景区<span class="spot">玉龙雪山风景区</span>（含排队约210分钟），乘坐<span class="spot">云杉坪索道</span>直达海拔3240米的云杉坪，观赏云杉树林、高山草甸与玉龙雪峰。</p>
-            <p>游览<span class="spot">蓝月谷</span>（不含电瓶车60元/人）、白水河、甘海子，玉龙雪山水流经此地，因地表矿物质幻化出迷人色彩。</p>
-            <p>游览世界文化遗产<span class="spot">丽江古城</span>及网红街（开放式自由活动），寻味小桥流水的闲适与浪漫。晚餐自理，可品尝古城内小吃美食，游览结束自行返回酒店。</p>
-            <div class="tip">温馨提示：玉龙雪山索道受风季、限流、维修等不可抗因素影响无法乘坐时，我社根据实际情况安排或改无索道并现退差价；可补差价升级冰川公园大索道（需提前预订，行程中不接受升级）。雪山防寒服50元/件、氧气60元/瓶，敬请自理。</div>
+            <p>早餐后8:00游览<span class="spot">大理古城</span>（约120分钟），漫步青石街道，品味风花雪月之地。</p>
+            <p>午餐后前往国家5A级景区<span class="spot">玉龙雪山风景区</span>（约210分钟），乘<span class="spot">云杉坪索道</span>直达海拔3240米，观赏云杉树林、高山草甸与玉龙雪峰。</p>
+            <p>游览<span class="spot">蓝月谷</span>（不含电瓶车60元/人）、白水河、甘海子。</p>
+            <p>游览世界文化遗产<span class="spot">丽江古城</span>及网红街，寻味小桥流水的闲适与浪漫。晚餐自理，可品尝古城小吃。</p>
+            <div class="tip">玉龙雪山索道受风季、限流等不可抗因素影响无法乘坐时退差价；可补差价升级冰川公园大索道。防寒服50元/件、氧气60元/瓶自理。</div>
           </div>
         </div>
-
         <div class="day">
+          <div class="day-img" style="background-image:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Shuhe%20ancient%20town%20Lijiang%20Yunnan%20old%20town%20cobblestone%20street%20stream%20flowers%20Naxi%20culture%20peaceful&image_size=landscape_4_3')"></div>
           <div class="day-head">
-            <span class="day-num">Day 5</span>
-            <span class="day-title">丽江 → 昆明</span>
+            <span class="day-num">Day 5</span><span class="day-title">丽江 → 昆明</span>
             <span class="day-route">束河古镇 → 洱海观景台 → 返回昆明</span>
-            <div class="day-meals">
-              <span class="meal-tag inc">早 √</span><span class="meal-tag inc">中 √</span><span class="meal-tag exc">晚 ×</span>
-            </div>
+            <div class="day-meals"><span class="meal-tag inc">早 √</span><span class="meal-tag inc">中 √</span><span class="meal-tag exc">晚 ×</span></div>
           </div>
           <span class="day-stay">🏨 住宿：昆明</span>
           <div class="day-content">
-            <p>早餐后8:00乘车游览国家4A级景区<span class="spot">束河古镇</span>（约60分钟），"世界文化遗产"丽江古城重要组成部分，保存完好的古道、集市及近千幢传统民居，古色古香。</p>
-            <p>午餐后乘车前往<span class="spot">洱海观景台</span>（约15分钟），观苍山看洱海，尽享风花雪月。行程结束后乘车返回昆明，抵达后入住酒店休息。</p>
+            <p>早餐后8:00游览国家4A级景区<span class="spot">束河古镇</span>（约60分钟），保存完好的古道、集市及近千幢传统民居，古色古香。</p>
+            <p>午餐后前往<span class="spot">洱海观景台</span>（约15分钟），观苍山看洱海，尽享风花雪月。乘车返回昆明入住酒店。</p>
           </div>
         </div>
-
         <div class="day">
+          <div class="day-img" style="background-image:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Kunming%20Changshui%20international%20airport%20Yunnan%20departure%20hall%20modern%20architecture%20sunset%20sky%20travel%20farewell&image_size=landscape_4_3')"></div>
           <div class="day-head">
-            <span class="day-num">Day 6</span>
-            <span class="day-title">昆明 → 返程</span>
-            <span class="day-route">集散中心 → 昆明长水国际机场 → 温馨的家</span>
-            <div class="day-meals">
-              <span class="meal-tag inc">早 √</span><span class="meal-tag exc">中 ×</span><span class="meal-tag exc">晚 ×</span>
-            </div>
+            <span class="day-num">Day 6</span><span class="day-title">昆明 → 返程</span>
+            <span class="day-route">集散中心 → 昆明长水机场 → 温馨的家</span>
+            <div class="day-meals"><span class="meal-tag inc">早 √</span><span class="meal-tag exc">中 ×</span><span class="meal-tag exc">晚 ×</span></div>
           </div>
           <span class="day-stay">🏨 住宿：无</span>
           <div class="day-content">
-            <p>早餐后前往<span class="spot">游客集散中心</span>（约90分钟），根据航班时间送至昆明长水国际机场，返回温馨的家。『云十五·悦美』期待您常来云南。</p>
-            <div class="tip">温馨提示：13点以前航班因时间关系无法安排集散中心，无退费。返程前请仔细整理行李物品及证件，核对航班时间。</div>
+            <p>早餐后前往<span class="spot">游客集散中心</span>（约90分钟），根据航班时间送至昆明长水国际机场，返回温馨的家。</p>
+            <div class="tip">13点以前航班无法安排集散中心，无退费。请核对航班时间，提前到机场办理登机手续。</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ====== 产品二 ====== -->
+    <!-- Pkg 2 -->
     <div class="tab-panel" id="pkg2">
-      <div class="pkg-overview">
+      <div class="pkg-ov">
         <h3>稻梦 昆大丽6天5晚（2-15人精品小团）</h3>
-        <p style="color:var(--muted);font-size:14.5px;">舒适出游：精品小团2-15人，个性化服务，不拥挤不嘈杂！精选住宿：首住4钻+大理海景1晚+丽江民宿酒店。合理出游：确定每天8点出发，提前合理安排时间。</p>
+        <p>精品小团2-15人，不拥挤不嘈杂！首住4钻+大理海景1晚+丽江民宿酒店。确定每天8点出发。</p>
         <div class="ov-grid">
-          <div class="ov-item"><div class="icon">🏨</div><div class="txt"><b>住宿标准</b>首住4钻+大理海景1晚+丽江民宿</div></div>
-          <div class="ov-item"><div class="icon">🍜</div><div class="txt"><b>用餐标准</b>5早5正（正餐30元/人）</div></div>
-          <div class="ov-item"><div class="icon">👥</div><div class="txt"><b>成团人数</b>2-15人精品小团</div></div>
-          <div class="ov-item"><div class="icon">🚗</div><div class="txt"><b>出发时间</b>每天早上8:00</div></div>
+          <div class="ov-item"><div class="ic">🏨</div><div class="t"><b>住宿</b>首住4钻+大理海景+丽江民宿</div></div>
+          <div class="ov-item"><div class="ic">🍜</div><div class="t"><b>用餐</b>5早5正（正餐30元/人）</div></div>
+          <div class="ov-item"><div class="ic">👥</div><div class="t"><b>人数</b>2-15人精品小团</div></div>
+          <div class="ov-item"><div class="ic">🚗</div><div class="t"><b>出发</b>每天早上8:00</div></div>
         </div>
       </div>
-
       <div class="timeline">
         <div class="day">
+          <div class="day-img" style="background-image:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Kunming%20city%20Yunnan%20airport%20arrival%20hall%20modern%20warm%20lighting%20travelers%20with%20luggage%20welcome&image_size=landscape_4_3')"></div>
           <div class="day-head">
-            <span class="day-num">Day 1</span>
-            <span class="day-title">各地 → 昆明</span>
+            <span class="day-num">Day 1</span><span class="day-title">各地 → 昆明</span>
             <span class="day-route">昆明接机 → 自由活动 → 入住酒店</span>
-            <div class="day-meals">
-              <span class="meal-tag exc">早 ×</span><span class="meal-tag exc">中 ×</span><span class="meal-tag exc">晚 ×</span>
-            </div>
+            <div class="day-meals"><span class="meal-tag exc">早 ×</span><span class="meal-tag exc">中 ×</span><span class="meal-tag exc">晚 ×</span></div>
           </div>
           <span class="day-stay">🏨 住宿：昆明</span>
           <div class="day-content">
             <p>出团前一天将有接机信息发送到您手机。各地至昆明后，专业工作人员接机/接站，带您前往入住指定备选酒店休息和自由活动。</p>
           </div>
         </div>
-
         <div class="day">
+          <div class="day-img" style="background-image:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Kunming%20Dianchi%20lake%20Haigeng%20dam%20seagulls%20flying%20sunset%20golden%20water%20West%20Mountain%20sleeping%20beauty%20Yunnan&image_size=landscape_4_3')"></div>
           <div class="day-head">
-            <span class="day-num">Day 2</span>
-            <span class="day-title">昆明 → 楚雄</span>
+            <span class="day-num">Day 2</span><span class="day-title">昆明 → 楚雄</span>
             <span class="day-route">西山景区 → 滇池海埂大坝 → 茶马花街 → 彝族长街宴（篝火晚会）</span>
-            <div class="day-meals">
-              <span class="meal-tag inc">早 √</span><span class="meal-tag exc">中 ×</span><span class="meal-tag inc">晚 √</span>
-            </div>
+            <div class="day-meals"><span class="meal-tag inc">早 √</span><span class="meal-tag exc">中 ×</span><span class="meal-tag inc">晚 √</span></div>
           </div>
           <span class="day-stay">🏨 住宿：楚雄</span>
           <div class="day-content">
-            <p>早餐后8:00出发，乘车游览<span class="spot">西山景区</span>（不含往返景区电瓶车自费60元/人），有"睡美人"之称。登龙门，感受古人智慧与巧夺天工。西山脚下网红打卡点<span class="spot">茶马花街</span>，自行品尝烤豆腐、红糖粑粑、台湾食吧、音乐咖啡西餐，午餐自由安排。</p>
-            <p>餐后前往<span class="spot">滇池海埂大坝</span>，观"高原明珠"滇池，眺望"睡美人"西山，与海鸥精灵互动（10月-3月为看海鸥季节）。</p>
-            <p>随后乘车前往楚雄，享受彝乡<span class="spot">彝族长街宴</span>与<span class="spot">祭火大典·篝火晚会</span>，品彝族特色美食，喝醇香彝族土家酒，欣赏霸道敬酒歌，跟随彝族儿女跳起"大三弦"舞，沉浸在火海、歌海及舞海中。</p>
+            <p>早餐后8:00游览<span class="spot">西山景区</span>（不含电瓶车60元/人），有"睡美人"之称。登龙门，感受古人智慧。<span class="spot">茶马花街</span>自由品尝烤豆腐、红糖粑粑等。</p>
+            <p>前往<span class="spot">滇池海埂大坝</span>，观"高原明珠"滇池，与海鸥精灵互动（10月-3月看海鸥季节）。</p>
+            <p>乘车前往楚雄，享受<span class="spot">彝族长街宴</span>与<span class="spot">祭火大典·篝火晚会</span>，品彝族美食，喝土家酒，跳"大三弦"舞，沉浸在火海、歌海及舞海中。</p>
           </div>
         </div>
-
         <div class="day">
+          <div class="day-img" style="background-image:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Dali%20Erhai%20lake%20cycling%20eco%20corridor%20S%20curve%20road%20blue%20water%20blue%20sky%20happy%20cyclists%20Yunnan%20travel&image_size=landscape_4_3')"></div>
           <div class="day-head">
-            <span class="day-num">Day 3</span>
-            <span class="day-title">楚雄 → 大理</span>
-            <span class="day-route">圣托里尼·理想邦 → 喜洲音乐酒吧车 → 非遗甲马手作 → 航拍+洱海旅拍 → 洱海骑行 → 鲜花宴</span>
-            <div class="day-meals">
-              <span class="meal-tag inc">早 √</span><span class="meal-tag inc">中 √</span><span class="meal-tag inc">晚 √</span>
-            </div>
+            <span class="day-num">Day 3</span><span class="day-title">楚雄 → 大理</span>
+            <span class="day-route">圣托里尼·理想邦 → 喜洲音乐酒吧车 → 非遗甲马手作 → 航拍+旅拍 → 洱海骑行 → 鲜花宴</span>
+            <div class="day-meals"><span class="meal-tag inc">早 √</span><span class="meal-tag inc">中 √</span><span class="meal-tag inc">晚 √</span></div>
           </div>
           <span class="day-stay">🏨 住宿：大理（海景酒店）</span>
           <div class="day-content">
-            <p>早餐后8:00出发前往大理网红景点、洱海的城堡——<span class="spot">圣托里尼·理想邦</span>。依山而建，街道诗意蜿蜒，面朝洱海春暖花开，居所与自然极美融合。</p>
-            <p>午餐后乘坐<span class="spot">喜洲音乐酒吧车</span>，解锁文艺大理——移动的音乐巡游车，搭载专业歌手献唱。</p>
-            <p>前往<span class="spot">非遗甲马手作体验</span>（30分钟），学习1300年非遗文化技艺，亲手印一张非遗甲马。甲马融合木刻版画与纸符，承载民间信仰，被誉为"人神信使"。</p>
-            <p>赠送<span class="spot">航拍+洱海旅拍</span>（每组家庭赠3-5张电子照片+一条团队航拍视频）。后前往最美转角——洱海生态廊道<span class="spot">洱海骑行</span>（不使用不退费），S湾每走一步都是风景。</p>
-            <p>晚餐安排<span class="spot">浪漫鲜花宴</span>，以云南特色食用鲜花为食材，领略七彩云南和飞花春城风情。入住大理酒店。</p>
+            <p>8:00出发前往<span class="spot">圣托里尼·理想邦</span>，依山而建，面朝洱海春暖花开。</p>
+            <p>乘坐<span class="spot">喜洲音乐酒吧车</span>，移动的音乐巡游车，搭载专业歌手献唱。</p>
+            <p><span class="spot">非遗甲马手作体验</span>（30分钟），学习1300年非遗文化技艺，亲手印一张非遗甲马。</p>
+            <p>赠送<span class="spot">航拍+洱海旅拍</span>（每组家庭赠3-5张照片+一条航拍视频）。前往最美转角<span class="spot">洱海骑行</span>，S湾每走一步都是风景。</p>
+            <p>晚餐安排<span class="spot">浪漫鲜花宴</span>，以云南特色食用鲜花为食材。入住大理酒店。</p>
           </div>
         </div>
-
         <div class="day">
+          <div class="day-img" style="background-image:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Lijiang%20ancient%20town%20night%20view%20red%20lanterns%20cobblestone%20streets%20water%20canals%20Naxi%20architecture%20atmospheric&image_size=landscape_4_3')"></div>
           <div class="day-head">
-            <span class="day-num">Day 4</span>
-            <span class="day-title">大理 → 丽江</span>
+            <span class="day-num">Day 4</span><span class="day-title">大理 → 丽江</span>
             <span class="day-route">大理古城 → 玉龙雪山（云杉坪）→ 蓝月谷 → 丽江古城</span>
-            <div class="day-meals">
-              <span class="meal-tag inc">早 √</span><span class="meal-tag inc">中 √</span><span class="meal-tag exc">晚 ×</span>
-            </div>
+            <div class="day-meals"><span class="meal-tag inc">早 √</span><span class="meal-tag inc">中 √</span><span class="meal-tag exc">晚 ×</span></div>
           </div>
           <span class="day-stay">🏨 住宿：丽江</span>
           <div class="day-content">
-            <p>早餐后8:00乘车至<span class="spot">大理古城</span>，青石板路蜿蜒，古色古香的建筑白墙黛瓦，南诏古国历史的缩影。</p>
-            <p>中餐后乘车前往国家5A级景区<span class="spot">玉龙雪山</span>，被誉为"东方瑞士"的"天然冰川博物馆"，离赤道最近的雪山群，主峰扇子陡海拔5596米。一路游览<span class="spot">甘海子</span>、<span class="spot">白水河</span>、<span class="spot">蓝月谷</span>（60-90分钟），乘小索道游览云杉坪（含小索道费及环保车，蓝月谷电瓶车自理60元/人）。</p>
-            <p>可自费观看演出《千古情》或《丽水金沙》。游览<span class="spot">丽江古城</span>（开放式景点），流水小桥人家宛若江南，自行品尝古城小吃，游览结束自行返回酒店。</p>
-            <div class="tip">温馨提示：云杉坪索道因限流、风季停开、维修等不可抗因素无法乘坐时，我社会根据索道公司政策退还费用。可升级玉龙雪山大索道（差价100元/人，不接受临时升级，不保证成功）。</div>
+            <p>8:00乘车至<span class="spot">大理古城</span>，青石板路蜿蜒，白墙黛瓦，南诏古国历史的缩影。</p>
+            <p>中餐后前往国家5A级景区<span class="spot">玉龙雪山</span>，"东方瑞士"的"天然冰川博物馆"，主峰扇子陡海拔5596米。游览<span class="spot">甘海子</span>、<span class="spot">白水河</span>、<span class="spot">蓝月谷</span>（60-90分钟），乘小索道游览云杉坪。</p>
+            <p>可自费观看《千古情》或《丽水金沙》。游览<span class="spot">丽江古城</span>，流水小桥人家宛若江南，自行品尝古城小吃。</p>
+            <div class="tip">云杉坪索道因限流、风季停开等不可抗因素无法乘坐时退还费用。可升级大索道（差价100元/人）。</div>
           </div>
         </div>
-
         <div class="day">
+          <div class="day-img" style="background-image:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Shuhe%20ancient%20town%20Lijiang%20Yunnan%20old%20town%20cobblestone%20street%20stream%20flowers%20Naxi%20culture%20peaceful&image_size=landscape_4_3')"></div>
           <div class="day-head">
-            <span class="day-num">Day 5</span>
-            <span class="day-title">丽江 → 昆明</span>
+            <span class="day-num">Day 5</span><span class="day-title">丽江 → 昆明</span>
             <span class="day-route">束河古镇 → 洱海观景台 → 返回昆明</span>
-            <div class="day-meals">
-              <span class="meal-tag inc">早 √</span><span class="meal-tag inc">中 √</span><span class="meal-tag exc">晚 ×</span>
-            </div>
+            <div class="day-meals"><span class="meal-tag inc">早 √</span><span class="meal-tag inc">中 √</span><span class="meal-tag exc">晚 ×</span></div>
           </div>
           <span class="day-stay">🏨 住宿：昆明</span>
           <div class="day-content">
-            <p>早餐后8:00出发前往<span class="spot">束河古镇</span>，纳西语称"绍坞"，意为"高峰之下的村寨"，是纳西先民最早聚居地之一，茶马古道上保存完好的重要集镇。古朴建筑、繁华步行街，小溪流穿过居民区，可随意漫步感受慢时光。</p>
-            <p>随后前往<span class="spot">洱海观景台</span>，俯瞰洱海和苍山的绝佳位置，视野开阔，洱海全貌与苍山雄伟尽收眼底。结束后乘车返回昆明，入住酒店。</p>
+            <p>8:00前往<span class="spot">束河古镇</span>，纳西语称"绍坞"，意为"高峰之下的村寨"，茶马古道上保存完好的重要集镇。小溪流穿过居民区，可随意漫步感受慢时光。</p>
+            <p>前往<span class="spot">洱海观景台</span>，俯瞰洱海和苍山的绝佳位置。结束后乘车返回昆明，入住酒店。</p>
           </div>
         </div>
-
         <div class="day">
+          <div class="day-img" style="background-image:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Kunming%20Changshui%20international%20airport%20Yunnan%20departure%20hall%20modern%20architecture%20sunset%20sky%20travel%20farewell&image_size=landscape_4_3')"></div>
           <div class="day-head">
-            <span class="day-num">Day 6</span>
-            <span class="day-title">昆明 → 返程</span>
+            <span class="day-num">Day 6</span><span class="day-title">昆明 → 返程</span>
             <span class="day-route">游客集散中心 → 送机 → 始发地</span>
-            <div class="day-meals">
-              <span class="meal-tag inc">早 √</span><span class="meal-tag exc">中 ×</span><span class="meal-tag exc">晚 ×</span>
-            </div>
+            <div class="day-meals"><span class="meal-tag inc">早 √</span><span class="meal-tag exc">中 ×</span><span class="meal-tag exc">晚 ×</span></div>
           </div>
           <span class="day-stay">🏨 住宿：无</span>
           <div class="day-content">
-            <p>早餐后前往<span class="spot">游客集散中心</span>，根据航班时间送至昆明长水国际机场，返回温馨的家（请预定14点以后起飞的航班）。</p>
-            <div class="tip">温馨提示：返程仔细整理好行李物品及证件，不要有所遗漏，核对航班时间，避免不必要的麻烦。</div>
+            <p>早餐后前往<span class="spot">游客集散中心</span>，根据航班时间送至昆明长水国际机场，返回温馨的家（请预定14点以后航班）。</p>
+            <div class="tip">返程仔细整理行李物品及证件，核对航班时间，避免不必要的麻烦。</div>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- 亮点 -->
-<section class="highlights" id="highlights">
+<!-- Highlights -->
+<section class="sec-bg" id="highlights" style="background:var(--bg);">
+  <div class="bg-img" style="background-image:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Yunnan%20panoramic%20landscape%20mountains%20lakes%20ancient%20towns%20cultural%20heritage%20birds%20eye%20view%20travel%20destination&image_size=landscape_16_9')"></div>
+  <div class="bg-overlay"></div>
   <div class="container">
-    <div class="section-title">
-      <div class="eyebrow">WHY CHOOSE US</div>
+    <div class="sec-title">
+      <div class="eb">WHY CHOOSE US</div>
       <h2>行程亮点</h2>
       <p>为什么选择我们的云南之旅</p>
       <div class="bar"></div>
     </div>
     <div class="hl-grid">
-      <div class="hl-card">
-        <div class="hl-icon">🚫</div>
-        <h4>纯玩无购物</h4>
-        <p>全程不进购物店，把时间留给风景，真正纯玩体验</p>
-      </div>
-      <div class="hl-card">
-        <div class="hl-icon">👥</div>
-        <h4>精品小团</h4>
-        <p>2-15人小团出行，更灵活、更贴心、更有品质</p>
-      </div>
-      <div class="hl-card">
-        <div class="hl-icon">🏔️</div>
-        <h4>核心景点</h4>
-        <p>玉龙雪山、洱海、丽江古城、大理古城经典全覆盖</p>
-      </div>
-      <div class="hl-card">
-        <div class="hl-icon">🏨</div>
-        <h4>精选住宿</h4>
-        <p>舒适型酒店+大理海景房，住得舒心才能玩得尽兴</p>
-      </div>
-      <div class="hl-card">
-        <div class="hl-icon">🍲</div>
-        <h4>民族美食</h4>
-        <p>彝族长街宴、南涧跳菜、鲜花宴、纳西风味，品味多彩云南</p>
-      </div>
-      <div class="hl-card">
-        <div class="hl-icon">📸</div>
-        <h4>网红打卡</h4>
-        <p>圣托里尼理想邦、洱海S湾、音乐大篷车，大片拍不停</p>
-      </div>
-      <div class="hl-card">
-        <div class="hl-icon">🎵</div>
-        <h4>特色体验</h4>
-        <p>私人游艇、非遗手作、篝火晚会，旅途不只是走马观花</p>
-      </div>
-      <div class="hl-card">
-        <div class="hl-icon">🕗</div>
-        <h4>8点出发</h4>
-        <p>每天固定8点出发，避免赶路焦虑，轻松享受度假时光</p>
-      </div>
+      <div class="hl-card"><div class="hl-icon">🚫</div><h4>纯玩无购物</h4><p>全程不进购物店，把时间留给风景</p></div>
+      <div class="hl-card"><div class="hl-icon">👥</div><h4>精品小团</h4><p>2-15人小团出行，更灵活、更贴心</p></div>
+      <div class="hl-card"><div class="hl-icon">🏔️</div><h4>核心景点</h4><p>玉龙雪山、洱海、丽江古城全覆盖</p></div>
+      <div class="hl-card"><div class="hl-icon">🏨</div><h4>精选住宿</h4><p>舒适型酒店+大理海景房</p></div>
+      <div class="hl-card"><div class="hl-icon">🍲</div><h4>民族美食</h4><p>长街宴、跳菜、鲜花宴、纳西风味</p></div>
+      <div class="hl-card"><div class="hl-icon">📸</div><h4>网红打卡</h4><p>圣托里尼、S湾、音乐大篷车</p></div>
+      <div class="hl-card"><div class="hl-icon">🎵</div><h4>特色体验</h4><p>私人游艇、非遗手作、篝火晚会</p></div>
+      <div class="hl-card"><div class="hl-icon">🕗</div><h4>8点出发</h4><p>避免赶路焦虑，轻松度假</p></div>
     </div>
   </div>
 </section>
 
-<!-- 费用标准 -->
-<section class="fees" id="fees">
+<!-- Fees -->
+<section class="sec-bg" id="fees">
+  <div class="bg-img" style="background-image:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Yunnan%20Lijiang%20ancient%20town%20stone%20bridge%20water%20reflection%20peaceful%20morning%20soft%20light%20travel&image_size=landscape_16_9')"></div>
+  <div class="bg-overlay"></div>
   <div class="container">
-    <div class="section-title">
-      <div class="eyebrow">PRICING & STANDARDS</div>
+    <div class="sec-title">
+      <div class="eb">PRICING & STANDARDS</div>
       <h2>费用与接待标准</h2>
       <p>明明白白消费，清清楚楚出行</p>
       <div class="bar"></div>
     </div>
-
     <div class="fee-tabs">
       <button class="fee-tab active" onclick="switchFee('fee1')">云十五·悦美</button>
       <button class="fee-tab" onclick="switchFee('fee2')">稻梦 昆大丽</button>
     </div>
-
-    <!-- 产品一费用 -->
     <div class="fee-panel active" id="fee1">
       <div class="fee-grid">
-        <div class="fee-box include">
+        <div class="fee-box inc">
           <h4>✔ 费用包含</h4>
           <ul class="fee-incl-list">
             <li><span class="emoji">🏨</span>全程酒店</li>
@@ -869,36 +773,26 @@
             <li><span class="emoji">🎫</span>全程景区门票</li>
             <li><span class="emoji">🏖️</span>大理升级海景客栈</li>
             <li><span class="emoji">🙅‍♀</span>司机+导游服务费</li>
-            <li><span class="emoji">🚙</span>景区之间的车接车送</li>
-            <li><span class="emoji">✈</span>24小时免费接送机服务</li>
+            <li><span class="emoji">🚙</span>景区车接车送</li>
+            <li><span class="emoji">✈</span>24小时免费接送机</li>
           </ul>
         </div>
-        <div class="fee-box exclude">
+        <div class="fee-box exc">
           <h4>✕ 费用不含</h4>
           <ul>
             <li>往返大交通（机票/动车）</li>
             <li>个人旅游意外险</li>
             <li>全程入住酒店产生的单房差</li>
             <li>自由活动期间交通费和餐费</li>
-            <li>景区内自费项目（如西山电瓶车60元、蓝月谷电瓶车60元、雪山防寒服/氧气等）</li>
-            <li>因不可抗力或自身原因产生的额外费用</li>
+            <li>景区内自费项目（电瓶车60元等）</li>
+            <li>因不可抗力或自身原因产生的费用</li>
           </ul>
         </div>
       </div>
-      <div class="standards">
-        <div class="std-grid">
-          <div class="std-card"><h5>🏨 住宿标准</h5><p>携程3钻酒店+首住升级1晚携程四钻酒店+大理1晚特色海景酒店（不指定钻级、非海景房）</p></div>
-          <div class="std-card"><h5>🍜 用餐标准</h5><p>5早餐/5正餐（正餐餐标30元/人），早餐均为酒店自助餐</p></div>
-          <div class="std-card"><h5>🎫 门票标准</h5><p>行程中已包含所有景区首道大门门票，旅行社优惠价格，任何证件不再减免</p></div>
-          <div class="std-card"><h5>👥 人数标准</h5><p>2-15成人精品小团（不含16岁及以下儿童）和服务人员</p></div>
-        </div>
-      </div>
     </div>
-
-    <!-- 产品二费用 -->
     <div class="fee-panel" id="fee2">
       <div class="fee-grid">
-        <div class="fee-box include">
+        <div class="fee-box inc">
           <h4>✔ 费用包含</h4>
           <ul class="fee-incl-list">
             <li><span class="emoji">🏨</span>全程酒店</li>
@@ -913,40 +807,33 @@
             <li><span class="emoji">🎫</span>全程景区门票</li>
             <li><span class="emoji">🏖️</span>大理升级海景客栈</li>
             <li><span class="emoji">🙅‍♀</span>司机+导游服务费</li>
-            <li><span class="emoji">🚙</span>景区之间的车接车送</li>
-            <li><span class="emoji">✈</span>24小时免费接送机服务</li>
+            <li><span class="emoji">🚙</span>景区车接车送</li>
+            <li><span class="emoji">✈</span>24小时免费接送机</li>
           </ul>
         </div>
-        <div class="fee-box exclude">
+        <div class="fee-box exc">
           <h4>✕ 费用不含</h4>
           <ul>
             <li>往返大交通（机票/动车）</li>
-            <li>旅游意外保险及航空保险（建议购买）</li>
+            <li>旅游意外保险及航空保险</li>
             <li>全程入住酒店产生的单房差</li>
             <li>自由活动期间交通费和餐费</li>
-            <li>景区内自费项目（如西山电瓶车60元、蓝月谷电瓶车60元、大索道差价100元等）</li>
-            <li>因不可抗力、自身过错或疾病产生的费用</li>
+            <li>景区内自费项目（大索道差价100元等）</li>
+            <li>因不可抗力、自身原因产生的费用</li>
           </ul>
         </div>
       </div>
-      <div class="standards">
-        <div class="std-grid">
-          <div class="std-card"><h5>🏨 住宿标准</h5><p>首住4钻+大理海景1晚+丽江民宿酒店</p></div>
-          <div class="std-card"><h5>🍜 用餐标准</h5><p>5早餐/5正餐，正餐30元/人/餐</p></div>
-          <div class="std-card"><h5>🎫 门票标准</h5><p>行程中已包含所有景区首道大门门票，旅行社优惠价格，任何证件不再减免</p></div>
-          <div class="std-card"><h5>👥 人数标准</h5><p>2-15人精品小团，15人为成人数（不含16周岁及以下儿童）和服务人员</p></div>
-        </div>
-      </div>
     </div>
-
   </div>
 </section>
 
-<!-- 温馨提示 -->
-<section class="notice" id="notice">
+<!-- Notice -->
+<section class="sec-bg" id="notice" style="background:var(--bg);">
+  <div class="bg-img" style="background-image:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Yunnan%20highland%20landscape%20misty%20mountains%20tea%20plantation%20terraced%20fields%20soft%20morning%20light%20zen%20atmosphere&image_size=landscape_16_9')"></div>
+  <div class="bg-overlay"></div>
   <div class="container">
-    <div class="section-title">
-      <div class="eyebrow">TRAVEL TIPS</div>
+    <div class="sec-title">
+      <div class="eb">TRAVEL TIPS</div>
       <h2>温馨提示</h2>
       <p>出行前请仔细阅读</p>
       <div class="bar"></div>
@@ -955,69 +842,111 @@
       <h4>出行须知</h4>
       <ul class="notice-list">
         <li>云南属高原地区，有心脏病、高血压、孕妇等不适合高原活动群体建议不要选择此产品。</li>
-        <li>行程中如有头晕、呼吸困难等高原反应症状，请及时告知随团导游。</li>
-        <li>云南地处云贵高原，昼夜温差大，请带足保暖防寒衣物；日照强、紫外线强，请备好防晒用品。</li>
-        <li>云南多数区域为少数民族聚居地，请尊重当地各民族的风俗习惯和宗教信仰。</li>
-        <li>团队游览期间擅自离团视同游客违约，旅行社服务关系自动终止。</li>
-        <li>云南旅游线路车程较长，请自备些许充饥食品和防晕车药品。</li>
-        <li>云南山高坡大，对限速有严格规定，上坡时车速有时仅20-30迈，敬请谅解。</li>
-        <li>当地带空调的酒店空调均定时开放，还请见谅。</li>
-        <li>出行必备：雨衣/雨伞、运动鞋、感冒药、肠胃药、防虫膏药、防晒油、太阳帽、太阳镜等。</li>
-        <li>旅游景区人流量较大，游览时请保管好个人财物及物品，以免遗失。</li>
-        <li>选择美食时请选择干净、卫生、安全有保障的场所用餐。</li>
-        <li>返程前请仔细整理行李物品及证件，核对航班时间，提前到机场办理登机手续。</li>
+        <li>行程中如有头晕、呼吸困难等症状，请及时告知随团导游。</li>
+        <li>昼夜温差大，请带足保暖防寒衣物；紫外线强，请备好防晒用品。</li>
+        <li>请尊重当地各民族的风俗习惯和宗教信仰。</li>
+        <li>团队游览期间擅自离团视同违约，旅行社服务关系自动终止。</li>
+        <li>车程较长，请自备充饥食品和防晕车药品。</li>
+        <li>上坡时车速有时仅20-30迈，敬请谅解。</li>
+        <li>当地带空调的酒店空调均定时开放。</li>
+        <li>出行必备：雨衣/雨伞、运动鞋、感冒药、肠胃药、防晒油、太阳帽等。</li>
+        <li>旅游景区人流量较大，请保管好个人财物。</li>
+        <li>选择美食时请选择干净卫生的场所用餐。</li>
+        <li>返程前请仔细整理行李物品及证件，核对航班时间。</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- 联系 -->
+<!-- Contact -->
 <section class="contact" id="contact">
   <div class="container">
     <h2>立即预订 / 咨询</h2>
-    <p>🌴 昆明 · 大理 · 丽江 六天五晚 &nbsp;|&nbsp; 预订总价 <span style="color:var(--accent-light);font-size:28px;font-weight:800;">1880元/人</span></p>
-    <div style="margin-bottom:30px;font-size:15px;opacity:0.9;">
+    <p>🌴 昆明 · 大理 · 丽江 六天五晚 | 预订总价 <span class="c-price">1880元/人</span></p>
+    <div class="c-info">
       预订方式：姓名 + 身份证号 + 电话 + 200元/人定金即可<br>
       预定成功，二年内任何时间出行都有效，节假日不涨价，不来200定金全额退还
     </div>
     <div class="contact-info">
-      <div>
-        <div class="label">咨询热线</div>
-        <div class="value">400-XXX-XXXX</div>
-      </div>
-      <div>
-        <div class="label">微信咨询</div>
-        <div class="value">yunzhinan_travel</div>
-      </div>
-      <div>
-        <div class="label">工作时间</div>
-        <div class="value">9:00 - 21:00</div>
-      </div>
+      <div><div class="label">咨询热线</div><div class="value">400-XXX-XXXX</div></div>
+      <div><div class="label">微信咨询</div><div class="value">yunzhinan_travel</div></div>
+      <div><div class="label">工作时间</div><div class="value">9:00 - 21:00</div></div>
     </div>
   </div>
 </section>
 
 <footer>
-  © 2026 彩云之南 · 昆大丽纯玩之旅 | 本网站仅供展示参考，具体行程以实际签约为准
+  © 2026 彩云之南 · 昆大丽纯玩之旅 | 具体行程以实际签约为准
 </footer>
 
+<!-- ====== Floating Guide Widget ====== -->
+<div class="guide-fab" id="guideFab" onclick="toggleGuide()">
+  <span class="fab-pulse"></span>
+  <span class="fab-icon">👨‍✈️</span>
+</div>
+<div class="guide-panel" id="guidePanel">
+  <div class="guide-panel-head">
+    <button class="guide-close" onclick="toggleGuide()">✕</button>
+    <div class="avatar"></div>
+    <h4>阿鹏哥</h4>
+    <p>金牌导游 · 昆大丽专线</p>
+  </div>
+  <div class="guide-panel-body">
+    <div class="guide-info-item">
+      <div class="gi-icon">📞</div>
+      <div class="gi-content"><div class="gi-label">联系电话</div><div class="gi-value">138-XXXX-XXXX</div></div>
+    </div>
+    <div class="guide-info-item">
+      <div class="gi-icon">💬</div>
+      <div class="gi-content"><div class="gi-label">微信号</div><div class="gi-value">yunnan_guide668</div></div>
+    </div>
+    <div class="guide-info-item">
+      <div class="gi-icon">⏰</div>
+      <div class="gi-content"><div class="gi-label">服务时间</div><div class="gi-value">9:00 - 21:00 全年无休</div></div>
+    </div>
+    <div class="guide-info-item">
+      <div class="gi-icon">🏆</div>
+      <div class="gi-content"><div class="gi-label">从业资质</div><div class="gi-value">国家高级导游证 · 8年经验</div></div>
+    </div>
+    <div class="guide-info-item">
+      <div class="gi-icon">📍</div>
+      <div class="gi-content"><div class="gi-label">服务范围</div><div class="gi-value">昆明 · 大理 · 丽江 · 楚雄</div></div>
+    </div>
+    <button class="guide-contact-btn" onclick="window.location.href='https://shykain.github.io/travel2/'">联系导游预订</button>
+    <div class="guide-qr">
+      <p>扫一扫添加微信</p>
+    </div>
+  </div>
+</div>
+
 <script>
-  // 行程Tab切换
-  function switchTab(id) {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    document.querySelector(`.tab-btn[onclick="switchTab('${id}')"]`).classList.add('active');
-    document.getElementById(id).classList.add('active');
-    // 平滑滚动到行程区
-    document.getElementById('itinerary').scrollIntoView({ behavior: 'smooth', block: 'start' });
+// Tab switch
+function switchTab(id) {
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
+  document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});
+  document.querySelector('.tab-btn[onclick="switchTab(\''+id+'\')"]').classList.add('active');
+  document.getElementById(id).classList.add('active');
+  document.getElementById('itinerary').scrollIntoView({behavior:'smooth',block:'start'});
+}
+// Fee switch
+function switchFee(id) {
+  document.querySelectorAll('.fee-tab').forEach(function(b){b.classList.remove('active');});
+  document.querySelectorAll('.fee-panel').forEach(function(p){p.classList.remove('active');});
+  document.querySelector('.fee-tab[onclick="switchFee(\''+id+'\')"]').classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
+// Guide toggle
+function toggleGuide() {
+  document.getElementById('guidePanel').classList.toggle('show');
+}
+// Close guide on outside click
+document.addEventListener('click', function(e) {
+  var fab = document.getElementById('guideFab');
+  var panel = document.getElementById('guidePanel');
+  if (!fab.contains(e.target) && !panel.contains(e.target)) {
+    panel.classList.remove('show');
   }
-  // 费用Tab切换
-  function switchFee(id) {
-    document.querySelectorAll('.fee-tab').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.fee-panel').forEach(p => p.classList.remove('active'));
-    document.querySelector(`.fee-tab[onclick="switchFee('${id}')"]`).classList.add('active');
-    document.getElementById(id).classList.add('active');
-  }
+});
 </script>
 
 </body>
