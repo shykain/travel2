@@ -308,19 +308,27 @@ footer { background:#0a1a1a; color:#666; text-align:center; padding:24px 20px; f
 /* ====== Floating Guide Widget ====== */
 .guide-fab {
   position:fixed; right:16px; bottom:16px; z-index:300;
-  width:56px; height:56px; border-radius:50%;
+  height:48px; padding:0 18px 0 10px; border-radius:30px;
   background:linear-gradient(135deg,var(--primary),var(--primary-l));
   box-shadow:0 4px 20px rgba(26,122,109,0.4); cursor:pointer;
+  display:flex; align-items:center; gap:8px;
+  transition:all .3s; border:2px solid #fff;
+}
+.guide-fab:hover { transform:scale(1.05); box-shadow:0 6px 28px rgba(26,122,109,0.5); }
+.guide-fab .fab-icon { font-size:22px; line-height:1; }
+.guide-fab .fab-text { font-size:13px; font-weight:700; color:#fff; white-space:nowrap; letter-spacing:1px; }
+.guide-fab .fab-badge {
+  position:absolute; top:-5px; right:-5px;
+  width:18px; height:18px; border-radius:50%;
+  background:var(--accent); color:#fff; font-size:10px; font-weight:700;
   display:flex; align-items:center; justify-content:center;
-  transition:all .3s; border:3px solid #fff;
+  border:2px solid #fff; line-height:1;
 }
-.guide-fab:hover { transform:scale(1.08); box-shadow:0 6px 28px rgba(26,122,109,0.5); }
-.guide-fab .fab-icon { font-size:24px; }
 .guide-fab .fab-pulse {
-  position:absolute; inset:-3px; border-radius:50%; border:3px solid var(--primary);
-  animation:pulse 2s infinite;
+  position:absolute; inset:-2px; border-radius:30px; border:2px solid var(--primary);
+  animation:pulse 2.5s infinite; pointer-events:none;
 }
-@keyframes pulse { 0%{opacity:0.6;transform:scale(1)} 100%{opacity:0;transform:scale(1.5)} }
+@keyframes pulse { 0%{opacity:0.5;transform:scale(1)} 100%{opacity:0;transform:scale(1.15)} }
 
 .guide-panel {
   position:fixed; right:16px; bottom:80px; z-index:300;
@@ -385,7 +393,9 @@ footer { background:#0a1a1a; color:#666; text-align:center; padding:24px 20px; f
   .day::before { left:-23px; width:14px; height:14px; }
   .day-meals { width:100%; }
   .guide-panel { width:calc(100vw - 32px); max-width:360px; }
-  .guide-fab { right:14px; bottom:14px; }
+  .guide-fab { right:12px; bottom:12px; height:44px; padding:0 14px 0 8px; }
+  .guide-fab .fab-text { font-size:12px; }
+  .guide-fab .fab-icon { font-size:20px; }
   .notice-list { grid-template-columns:1fr; }
   .notice-box { padding:24px 18px; }
 }
@@ -883,6 +893,8 @@ footer { background:#0a1a1a; color:#666; text-align:center; padding:24px 20px; f
 <div class="guide-fab" id="guideFab" onclick="toggleGuide()">
   <span class="fab-pulse"></span>
   <span class="fab-icon">👨‍✈️</span>
+  <span class="fab-text">点击联系导游</span>
+  <span class="fab-badge">1</span>
 </div>
 <div class="guide-panel" id="guidePanel">
   <div class="guide-panel-head">
